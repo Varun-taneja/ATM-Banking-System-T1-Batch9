@@ -16,7 +16,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}></Route>
-        <Route path='/create' element={<CreateCustomer />} />
+        <Route path='/create-customer-details' element={<CreateCustomer />} />
         <Route path='/edit-customer-details' element={<AddCustomerDetails />} />
         <Route path='/transaction-details' element={<TransactionDetails />} />
         <Route path='/customer-card-details' element={<CustomerCardDetails />} />
