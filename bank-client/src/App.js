@@ -5,11 +5,20 @@ function App() {
   return (
     <div className="App">
       <div className='gridContainer'>
-      <Link to="create">
+      <Link to="create-customer-details">
         <button >Create Customer</button>
       </Link>
-      <Link to="create">
-        <button >View Customer</button>
+      <Link to="edit-customer-details">
+        <button >Edit Customer</button>
+      </Link>
+      <Link to="transaction-details">
+        <button >View Transactions</button>
+      </Link>
+      <Link to="customer-card-details">
+        <button >View Card Details</button>
+      </Link>
+      <Link to="balance">
+        <button >View Balance</button>
       </Link>
       </div>
     </div>
