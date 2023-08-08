@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import CreateCustomer from './pages/CreateCustomer';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -11,6 +12,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}></Route>
+        <Route path='/create' element={<CreateCustomer />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
