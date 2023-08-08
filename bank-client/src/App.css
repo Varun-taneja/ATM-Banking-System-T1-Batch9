@@ -1,5 +1,13 @@
 .gridContainer {
   display:flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.gridContainer > a {
+  flex-basis: 50%;
+}
+button {
+  border: 0.1em solid;
+  margin: 1em;
 }
