@@ -12,6 +12,7 @@ import BalanceCheck from './pages/BalanceCheck';
 import AddCustomerDetails from './pages/AddCustomerDetails';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import InvalidRoute from './components/InvalidRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,6 +31,9 @@ root.render(
         {/* admin routes */}
         {/* <Route path='/register-admin' element={<Register />} /> */}
         {/* <Route path='/login-admin' element={<Login />} /> */}
+
+        {/* Handling invalid routes */}
+        <Route path='*' element={<InvalidRoute />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
