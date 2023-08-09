@@ -18,8 +18,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App />}></Route>
-        <Route path='/home' element={<Home />}></Route>
+        {/* <Route path='/' element={<Home />}></Route> */}
+        <Route path='/' element={<Login />}></Route>
+        <Route path='/home' element={<App />}></Route>
         {/* customer routes */}
         <Route path='/create-customer-details' element={<CreateCustomer />} />
         <Route path='/edit-customer-details' element={<AddCustomerDetails />} />
@@ -27,8 +28,8 @@ root.render(
         <Route path='/customer-card-details' element={<CustomerCardDetails />} />
         <Route path='/balance' element={<BalanceCheck />} />
         {/* admin routes */}
-        <Route path='/register-admin' element={<Register />} />
-        <Route path='/login-admin' element={<Login />} />
+        {/* <Route path='/register-admin' element={<Register />} /> */}
+        {/* <Route path='/login-admin' element={<Login />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
