@@ -12,8 +12,8 @@
 
 .main {
     width: 350px;
-    background-color: #161624aa;
-    height: 530px;
+    background-color: #161618ee;
+    height: 550px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
@@ -41,8 +41,8 @@
     margin:5px auto;
     justify-content: center;
     display: block;
-    color: #fff;
-    background: #CD1409;
+    color: #f3eaea;
+    background: #0a0a0a;
     font-size: 1em;
     font-weight: bold;
     margin-top: 10px;
@@ -55,7 +55,7 @@
 
 .login {
     height: 470px;
-    background: #161624;
+    background: #b4b4b8;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
     transition: .8s ease-in-out;
@@ -79,7 +79,7 @@
     top: 0px;
     left: 0px;
     font-size: 16px;
-    color: #fff;
+    color: #c6c2c2;
     pointer-events: none;
     transition: .5s;
 }
@@ -87,10 +87,10 @@
 .user-box input {
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: #2e2b2b;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #3b3737;
     outline: none;
     background: transparent;
 }
@@ -99,7 +99,7 @@
 .user-box input:valid~label {
     top: -20px;
     left: 0;
-    color: #FFFF00;
+    color: #2c2c28;
     font-size: 12px;
     font-weight: bold;
 }
@@ -124,5 +124,5 @@ label[for="chk"] {
 
 .login label,
 .login input {
-    color: #CD1409;
+    color: #0c0b0b;
 }
