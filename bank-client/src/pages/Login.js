@@ -36,7 +36,7 @@ function Login() {
 
         try {
             setLoading(true)
-            navigate("/")
+            navigate("/home")
         } catch(err) {
             alert(err.message.substring(
                 err.message.indexOf(":") + 1,
