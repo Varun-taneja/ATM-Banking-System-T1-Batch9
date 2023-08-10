@@ -1,0 +1,14 @@
+.rowC{display:flex; flex-direction:row;}
+
+.formC{position: inherit; padding: 4em;}
+
+.colnC{display:flex; flex-direction:column;}
+
+.searchC{margin-left: auto; 
+    margin-right: 0;
+    padding-bottom: 5em;
+    }
+
+.padd{
+    padding: 5em;
+}

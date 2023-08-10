@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Home from './Home';
 import CreateCustomer from './pages/CreateCustomer';
+import ViewCustomer from './pages/ViewCustomer';
 import TransactionDetails from './pages/TransactionDetails';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -28,6 +29,7 @@ root.render(
         <Route path='/transaction-details' element={<TransactionDetails />} />
         <Route path='/customer-card-details' element={<CustomerCardDetails />} />
         <Route path='/balance' element={<BalanceCheck />} />
+        <Route path='/view-customer' element={<ViewCustomer />} />
         {/* admin routes */}
         {/* <Route path='/register-admin' element={<Register />} /> */}
         {/* <Route path='/login-admin' element={<Login />} /> */}

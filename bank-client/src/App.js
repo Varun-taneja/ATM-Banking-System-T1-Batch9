@@ -2,9 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import Snavbar from './components/Snavbar'
 import { Link } from 'react-router-dom';
+import Carousel from './components/Carousel';
 function App() {
   return (
-    <Snavbar/>
+    // <Snavbar/>
+    <div className='rowC'>
+            <Snavbar />
+            <Carousel/>
+    </div>
 
     // <div className="App">
     //   <div className='gridContainer'>

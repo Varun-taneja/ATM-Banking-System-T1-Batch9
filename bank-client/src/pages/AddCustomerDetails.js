@@ -1,10 +1,19 @@
 import React from 'react';
+import Snavbar from '../components/Snavbar'
+import "../Div.css"
+import Nform from '../components/Nform';
+import Searchbar from '../components/Searchbar';
 
 function AddCustomerDetails() {
     return (
-        <React.Fragment>
-            <h1>Add/Edit Customer Details</h1>
-        </React.Fragment>
+        <div className='rowC'>
+            <Snavbar />
+            <div className='colnC'>
+                <div className='searchC'><Searchbar/></div>
+                <div className="formC"><Nform /></div>
+            </div>
+            {/* <h1>Add/Edit Customer Details</h1> */}
+        </div>
     )
 }
 

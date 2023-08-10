@@ -15,27 +15,37 @@ const Snavbar = () => {
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            Sidebar
+            BANK|U&Me
           </a>
         </CDBSidebarHeader>
-
+        {/* <Route path='/create-customer-details' element={<CreateCustomer />} />
+        <Route path='/edit-customer-details' element={<AddCustomerDetails />} />
+        <Route path='/transaction-details' element={<TransactionDetails />} />
+        <Route path='/customer-card-details' element={<CustomerCardDetails />} />
+        <Route path='/balance' element={<BalanceCheck />} /> */}
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
+            <NavLink exact to="/create-customer-details" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">Create Customer</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Tables</CDBSidebarMenuItem>
+            <NavLink exact to="/view-customer" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">View Customer</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
+            <NavLink exact to="/edit-customer-details" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Add Customer Details</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/analytics" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
+            <NavLink exact to="/balance" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="dollar-sign">Balance Check</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/customer-card-details" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="credit-card" iconType="solid">Customer Card Details</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/transaction-details" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="chart-line">Customer Transaction Details</CDBSidebarMenuItem>
             </NavLink>
 
             <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="exclamation-circle">LOGOUT</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
@@ -46,7 +56,7 @@ const Snavbar = () => {
               padding: '20px 5px',
             }}
           >
-            Sidebar Footer
+            Admin Login
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>
