@@ -42,5 +42,49 @@ namespace ATM_BS.API.Controllers
                 throw;
             }
         }
+
+        [HttpGet,Route("GetCustomer/{id}")]
+        public IActionResult GetCustomer(int id)
+        {
+            try
+            {
+                Customer customer = customerService.GetCustomer(id);
+                CustomerDTO customerDTO = new CustomerDTO()
+                {
+                    CustomerID = customer.CustomerId,
+                    CustomerName = customer.CustomerName,
+                    AccountType = customer.AccountType,
+                    Address = customer.Address,
+                    Pincode = customer.Pincode,
+                    Email = customer.Email,
+                    Contact = customer.Contact,
+                    AccountNumber = customer.AccountNumber,
+                };
+                return StatusCode(200, customerDTO);
+            }
+            catch(Exception) { throw; }
+        }
+
+        [HttpPut,Route("EditCustomer")]
+        public IActionResult EditCustomer(CustomerDTO customerDTO)
+        {
+            try
+            {
+                Customer customer = new Customer()
+                {
+                    CustomerId = customerDTO.CustomerID,
+                    CustomerName = customerDTO.CustomerName,
+                    AccountType = customerDTO.AccountType,
+                    Address = customerDTO.Address,
+                    Pincode = customerDTO.Pincode,
+                    Email = customerDTO.Email,
+                    Contact = customerDTO.Contact,
+                    AccountNumber = customerDTO.AccountNumber,
+                };
+                customerService.EditCustomer(customer);
+                return StatusCode(200, customerDTO);
+            }
+            catch (Exception) { throw; }
+        }
     }
 }

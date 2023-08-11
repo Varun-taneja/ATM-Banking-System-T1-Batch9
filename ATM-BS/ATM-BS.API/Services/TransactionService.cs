@@ -18,16 +18,36 @@ namespace ATM_BS.API.Service
             _dbcontext.SaveChanges();
         }
 
-
-        public List<Transaction> GetTransactions()
+        public List<Transaction> GetTransactions(int AccountNumber)
         {
-            return _dbcontext.Transactions.ToList();
+            try
+            {
+                List<Transaction> transactions = (from e in _dbcontext.Transactions
+                                                  where e.AccountNumber == AccountNumber
+                                                  select new Transaction()
+                                                  {
+                                                      AccountNumber = e.AccountNumber,
+                                                      Type = e.Type,
+                                                      CardNumber = e.CardNumber,
+                                                      TransactionTime = e.TransactionTime,
+                                                      Region = e.Region,
+                                                      Amount = e.Amount,
+                                                  }).ToList();
+                return transactions;
+            }
+            catch (Exception )
+            {
+                throw;
+            }
         }
 
-        public Transaction GetTransaction(long AccountNumber)
-        {
-            Transaction transaction = _dbcontext.Transactions.Find(AccountNumber);
-            return transaction;
-        }
+
+
+
+        //public Transaction GetTransaction(long AccountNumber)
+        // {
+        //   Transaction transaction = _dbcontext.Transactions.Find(AccountNumber);
+        //    return transaction;
+        //}
     }
 }
