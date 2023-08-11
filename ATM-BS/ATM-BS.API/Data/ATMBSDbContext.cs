@@ -5,10 +5,10 @@ namespace ATM_BS.API.Data
 {
     public class ATMBSDbContext : DbContext
     {
-        //public ATMBSDbContex(DbContextOptions<ATMBSDbContex> options) : base(options)
-        //{
+        public ATMBSDbContext(DbContextOptions<ATMBSDbContext> options) : base(options)
+        {
 
-        //}
+        }
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -18,7 +18,7 @@ namespace ATM_BS.API.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=WINDOWS-BVQNF6J;Initial Catalog=master;Persist Security Info=True;User ID=sa;Password=12345;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Data Source=WINDOWS-BVQNF6J;Initial Catalog=bank;Persist Security Info=True;User ID=sa;Password=12345;TrustServerCertificate=True;");
         }
     }
 }

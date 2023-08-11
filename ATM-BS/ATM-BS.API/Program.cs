@@ -1,3 +1,6 @@
+using ATM_BS.API.Service;
+using ATM_BS.API.Services;
+
 namespace ATM_BS.API
 {
     public class Program
@@ -7,6 +10,11 @@ namespace ATM_BS.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddTransient<IAdminService, AdminService>();
+            builder.Services.AddTransient<ICustomerService, CustomerService>();
+            builder.Services.AddTransient<ITransactionService, TransactionService>();
+            builder.Services.AddTransient<IBalanceService, BalanceService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -7,12 +7,12 @@ namespace ATM_BS.API.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable identity
-        public long AccountNumber { get; set; }
+        public int AccountNumber { get; set; }
         [Required]
         [Column(TypeName = "varchar")]
         public string Type { get; set; }
         [Required]
-        public long CardNumber { get; set; }
+        public int CardNumber { get; set; }
         [Required]
         public DateTime TransactionTime { get; set; }
         [Required]

@@ -36,7 +36,7 @@ namespace ATM_BS.API.Entities
 
         [Required]
         [ForeignKey("Balance, Transaction")]
-        public long AccountNumber { get; set; }
+        public int AccountNumber { get; set; }
         public Balance? Balance { get; set; }
         public Transaction? Transaction { get; set; }
 

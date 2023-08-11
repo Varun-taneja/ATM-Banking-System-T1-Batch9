@@ -10,7 +10,7 @@ namespace ATM_BS.API.Entities
         public int AccountNumber { get; set; }
 
         [Required] //applies not null constraint
-        [Column(TypeName = "long")]
-        public long AccountBalance { get; set; }
+ 
+        public double AccountBalance { get; set; }
     }
 }
