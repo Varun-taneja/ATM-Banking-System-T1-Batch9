@@ -1,6 +1,6 @@
 ﻿namespace ATM_BS.API.Models
 {
-    public class Customer
+    public class CustomerModel
     {
         public Guid CustomerId { get; set; }
         public string CustomerName { get; set; }
