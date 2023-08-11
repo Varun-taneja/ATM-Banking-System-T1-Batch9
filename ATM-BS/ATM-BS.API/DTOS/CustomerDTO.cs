@@ -4,7 +4,6 @@
     {
         public int CustomerID { get; set; }
         public string CustomerName { get; set; }
-
         public string AccountType { get; set; }
         public string Address { get; set; }
         public int Pincode { get; set; }

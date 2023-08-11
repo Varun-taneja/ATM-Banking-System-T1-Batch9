@@ -1,4 +1,5 @@
-﻿using ATM_BS.API.Entities;
+﻿using ATM_BS.API.DTOS;
+using ATM_BS.API.Entities;
 using ATM_BS.API.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace ATM_BS.API.Controllers
             {
                 Customer customer = new Customer()
                 {
-                    CustomerId = customerDTO.CustomerId,
+                    CustomerId = customerDTO.CustomerID,
                     CustomerName = customerDTO.CustomerName,
                     AccountType = customerDTO.AccountType,
                     AccountNumber = customerDTO.AccountNumber,
