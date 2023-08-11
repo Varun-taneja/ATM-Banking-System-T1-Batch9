@@ -8,6 +8,7 @@ namespace ATM_BS.API.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable identity
+        public long AccountNumber { get; set; }
         public int TransactionId { get; set; }
         [Required]
         [Column(TypeName = "varchar")]
@@ -21,8 +22,8 @@ namespace ATM_BS.API.Entities
         public string Region { get; set; }
         [Required]
         public double Amount;
-        [ForeignKey("Customer")]
-        public long AccountNumber { get; set; }
-        public Customer? Customer { get; set; }
+      //  [ForeignKey("Customer")]
+
+      //  public Customer? Customer { get; set; }
     }
 }

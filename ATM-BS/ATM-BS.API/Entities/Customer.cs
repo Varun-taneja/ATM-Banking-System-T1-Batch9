@@ -10,6 +10,8 @@ namespace ATM_BS.API.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable identity
         public int CustomerId { get; set; }
 
+
+
         [Required] //applies not null constraint
         [Column(TypeName = "varchar")]
         [StringLength(50)]
@@ -35,8 +37,12 @@ namespace ATM_BS.API.Entities
         public int Contact { get; set; }
 
         [Required]
+        [ForeignKey("Balance")]
+        [ForeignKey("Transaction")]
         public long AccountNumber { get; set; }
 
+       public Balance? Balance { get; set; } //Navigatation Prop
+       public Transaction? Transaction { get; set; }
     }
 }
 

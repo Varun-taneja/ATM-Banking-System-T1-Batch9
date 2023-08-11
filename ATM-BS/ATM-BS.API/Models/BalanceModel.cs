@@ -4,10 +4,11 @@ namespace ATM_BS.API.Models
 {
     public class BalanceModel
     {
-        public int id { get; set; }
+        //  public int id { get; set; }
+        [ForeignKey("CustomerModel")]
+        public long AccountNumber { get; set; }
         public long AccountBalance { get; set; }
-        [ForeignKey("Customer")]
-        public int AccountNumber { get; set; }
+        
         public CustomerModel CustomerModel { get; set; }
     }
 }

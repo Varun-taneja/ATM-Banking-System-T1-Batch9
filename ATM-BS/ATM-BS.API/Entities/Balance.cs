@@ -8,15 +8,17 @@ namespace ATM_BS.API.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable identity
-        public int Id { get; set; }
+      //  public int Id { get; set; }
+       public long AccountNumber { get; set; }
+
 
         [Required] //applies not null constraint
         [Column(TypeName = "long")]
         public long AccountBalance { get; set; }
 
-        [ForeignKey("Customer")]
-        public int AccountNumber { get; set; }
+       // [ForeignKey("Customer")]
+      //  public long AccountNumber { get; set; }
 
-        public Customer? Customer { get; set; }
+      //  public Customer? Customer { get; set; }
     }
 }
