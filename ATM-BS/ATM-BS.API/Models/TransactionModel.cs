@@ -2,7 +2,7 @@
 
 namespace ATM_BS.API.Models
 {
-    public class Transaction
+    public class TransactionModel
     {
         public string Type { get; set; }
         public int CardNumber { get; set; }
@@ -11,6 +11,6 @@ namespace ATM_BS.API.Models
         public int Amount { get; set; }
         [ForeignKey("Customer")]
         public long AccountNumber { get; set; }
-        public Customer Customer { get; set; }
+        public CustomerModel CustomerModel { get; set; }
     }
 }
