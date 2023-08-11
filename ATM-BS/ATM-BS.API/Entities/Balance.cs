@@ -6,6 +6,10 @@ namespace ATM_BS.API.Entities
 {
     public class Balance
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)] //disable identity
+        public int Id { get; set; }
+
         [Required] //applies not null constraint
         [Column(TypeName = "long")]
         public long AccountBalance { get; set; }

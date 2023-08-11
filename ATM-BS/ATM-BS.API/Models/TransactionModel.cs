@@ -4,6 +4,7 @@ namespace ATM_BS.API.Models
 {
     public class TransactionModel
     {
+        public int TransactionId { get; set; }
         public string Type { get; set; }
         public int CardNumber { get; set; }
         public DateTime TransactionTime { get; set; }
