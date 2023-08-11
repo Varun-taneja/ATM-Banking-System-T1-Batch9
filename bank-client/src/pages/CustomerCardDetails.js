@@ -2,6 +2,7 @@ import React from "react";
 import Snavbar from '../components/Snavbar'
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
+import CardDisplay from "../components/CardDisplay";
 
 function CustomerCardDetails(){
     return (
@@ -9,7 +10,8 @@ function CustomerCardDetails(){
             <Snavbar />
             <div className='colnC'>
                 <div className='searchC'><SearchBar/></div>
-                <h1 className="padd">Customer Card Details</h1>
+                <div classname="padd"><CardDisplay/></div>
+                {/* <h1 className="padd">Customer Card Details</h1> */}
             </div>
             
         </div>
