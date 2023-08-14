@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 
 function CreateCustomer(){
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState();
     const [custId, setCustId] = useState();
@@ -21,6 +22,7 @@ function CreateCustomer(){
 
     async function handleSubmit(e) {
         const data = {
+            name,
             email,
             contact,
             customerID:parseInt(custId),
@@ -56,6 +58,17 @@ function CreateCustomer(){
             <div className='colnC'>
                 <div className="formC">
                     <Form>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="name" placeholder="Enter Your Full Name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridContact">
+                            <Form.Label>Contact Number</Form.Label>
+                            <Form.Control type="Contact" placeholder="xxxxxxxxxx"  value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
+                            </Form.Group>
+                        </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
