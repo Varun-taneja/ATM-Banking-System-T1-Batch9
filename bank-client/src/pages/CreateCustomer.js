@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 // import Nform from "../components/Nform";
 // import Searchbar from '../components/Searchbar';
-const axios = require('axios').default;
+import axios from 'axios';
 
 function CreateCustomer(){
     const [email, setEmail] = useState("");
@@ -23,12 +23,13 @@ function CreateCustomer(){
         const data = {
             email,
             contact,
-            custId,
-            accountNumber,
+            customerID:parseInt(custId),
+            accountType:"Savings",
+            customerName:"Jack",
+            accountNumber:parseInt(accountNumber),
             address,
-            pincode,
-            state,
-            city
+            pincode:parseInt(pincode),
+            
         }
         e.preventDefault()
 
@@ -38,14 +39,12 @@ function CreateCustomer(){
 
         try {
             console.log(data)
-            const res = await axios.post('', data,{ 
+            const res = await axios.post('http://localhost:30140/api/Customer/AddCustomer', data,{ 
                 headers: {'Content-Type': 'application/json'}})
             console.log(res)
             
         } catch (err) {
-            // alert(err.message.substring(
-            //     err.message.indexOf(":") + 1,
-            //     err.message.lastIndexOf("(")))
+            console.log(err);
         }
 
         // setLoading(false)
@@ -77,7 +76,7 @@ function CreateCustomer(){
 
                             <Form.Group as={Col} controlId="formGridAccountNo">
                             <Form.Label>Account Number</Form.Label>
-                            <Form.Control type="Contact" placeholder="xxxxxxxxxx" value={accountNumber} onChange={(e)=>{setAccountNumber(e.target.value)}}/>
+                            <Form.Control type="Contact" placeholder="xxxxxxxxxx" value={accountNumber} onChange={(e)=>{setAccountNumber((e.target.value))}}/>
                             </Form.Group>
                         </Row>
                             
