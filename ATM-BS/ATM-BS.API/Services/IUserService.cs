@@ -2,9 +2,8 @@
 
 namespace ATM_BS.API.Services
 {
-    public interface IAdminService
+    public interface IUserService
     {
-        void AddAdmin(Admin admin);
         Admin? Validate(string username, string password);
     }
 }

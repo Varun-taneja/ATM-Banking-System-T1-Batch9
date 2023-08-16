@@ -8,7 +8,7 @@
         public string Address { get; set; }
         public int Pincode { get; set; }
         public string Email { get; set; }
-        public int Contact { get; set; }
+        public string Contact { get; set; }
         public int AccountNumber { get; set; }
     }
 }

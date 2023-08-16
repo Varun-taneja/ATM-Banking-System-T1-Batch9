@@ -1,6 +1,7 @@
 ﻿using ATM_BS.API.DTOS;
 using ATM_BS.API.Entities;
 using ATM_BS.API.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@ namespace ATM_BS.API.Controllers
         [HttpPost,Route("AddCustomer")]
         public IActionResult Add(CustomerDTO customerDTO)
         {
+            Console.WriteLine(customerDTO);
             try
             {
                 Customer customer = new Customer()
@@ -33,6 +35,7 @@ namespace ATM_BS.API.Controllers
                     Email = customerDTO.Email,
                     Contact = customerDTO.Contact,
                 };
+
                 customerService.AddCustomer(customer);
                 return StatusCode(200, customerDTO);
 

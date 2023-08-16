@@ -134,3 +134,4 @@ C:\Users\Administrator\Documents\Team_1\ATM-Banking-System-T1-Batch9\ATM-BS\ATM-
 C:\Users\Administrator\Documents\Team_1\ATM-Banking-System-T1-Batch9\ATM-BS\ATM-BS.API\obj\Debug\net6.0\ATM-BS.API.pdb
 C:\Users\Administrator\Documents\Team_1\ATM-Banking-System-T1-Batch9\ATM-BS\ATM-BS.API\obj\Debug\net6.0\ATM-BS.API.genruntimeconfig.cache
 C:\Users\Administrator\Documents\Team_1\ATM-Banking-System-T1-Batch9\ATM-BS\ATM-BS.API\obj\Debug\net6.0\ref\ATM-BS.API.dll
+C:\Users\Administrator\Documents\Team_1\ATM-Banking-System-T1-Batch9\ATM-BS\ATM-BS.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

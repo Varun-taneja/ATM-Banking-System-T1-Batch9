@@ -1,22 +1,15 @@
 ﻿using ATM_BS.API.Data;
 using ATM_BS.API.Entities;
-using ATM_BS.API.Services;
 
-namespace ATM_BS.API.Service
+namespace ATM_BS.API.Services
 {
-    public class AdminService : IAdminService
+    public class UserService : IUserService
     {
         private readonly ATMBSDbContext _dbcontext;
 
-        public AdminService(ATMBSDbContext dbcontext)
+        public UserService(ATMBSDbContext dbcontext)
         {
             _dbcontext = dbcontext;
-        }
-
-        public void AddAdmin(Admin admin)
-        {
-            _dbcontext.Admins.Add(admin); //save records to the Admins table
-            _dbcontext.SaveChanges();
         }
         public Admin? Validate(string username, string password)
         {

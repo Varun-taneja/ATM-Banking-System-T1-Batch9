@@ -32,7 +32,7 @@ namespace ATM_BS.API.Entities
         public string Email { get; set; }
 
         [Required]
-        public int Contact { get; set; }
+        public string Contact { get; set; }
 
         [Required]
         [ForeignKey("Balance, Transaction")]

@@ -2,6 +2,9 @@ using ATM_BS.API.Data;
 using ATM_BS.API.Service;
 using ATM_BS.API.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ATM_BS.API
 {
@@ -11,6 +14,7 @@ namespace ATM_BS.API
         {
             var builder = WebApplication.CreateBuilder(args);
             var connection = builder.Configuration.GetConnectionString("ATMConnection");
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             // Add services to the container.
             builder.Services.AddDbContext<ATMBSDbContext>(options => options.UseSqlServer(connection));
             builder.Services.AddTransient<IAdminService, AdminService>();
@@ -23,6 +27,37 @@ namespace ATM_BS.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("*").AllowAnyHeader();
+                                  });
+            });
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddControllers();
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,7 +66,8 @@ namespace ATM_BS.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors(MyAllowSpecificOrigins);
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
