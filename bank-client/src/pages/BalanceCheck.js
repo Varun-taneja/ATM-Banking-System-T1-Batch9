@@ -8,17 +8,7 @@ function BalanceCheck(){
     const [accountNumber, setAccountNumber] = useState()
     const [accountBalance, setAccountBalance ] = useState()
 
-    useEffect(() => {
-        axios
-          .get("")
-          .then((response) => {
-            // setMovies(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(this.error);
-          });
-      });
+ 
       const getBalByAccntNo = (event) => {
         axios
           .get("" + accountNumber)
@@ -30,7 +20,7 @@ function BalanceCheck(){
 
           })
           .catch((error) => {
-            console.log(this.error);
+            console.log(error);
           });
     
         event.preventDefault();

@@ -79,7 +79,7 @@ import {
     Col,
   } from "react-bootstrap";
   
-  export default function SearchBar() {
+  export default function SearchBar({searchValue, setSearchValue, submitSearch}) {
     return (
       <Container className="mt-5">
         <Row>
@@ -93,6 +93,7 @@ import {
                     width="16"
                     height="16"
                     fill="currentColor"
+                    onClick={submitSearch}
                   >
                     <path
                       fill-rule="evenodd"
@@ -104,7 +105,7 @@ import {
                     />
                   </svg>
                 </InputGroup.Text>
-                <FormControl type="search" className="me-2" placeholder="Search" />
+                <FormControl type="search" className="me-2" placeholder="Search" value={searchValue} onChange={((e)=>setSearchValue(e.target.value))}/>
               </InputGroup>
               
             </Form>

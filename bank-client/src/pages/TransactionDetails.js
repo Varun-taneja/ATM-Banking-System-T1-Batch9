@@ -12,21 +12,13 @@ function TransactionDetails(){
     const [amount, setAmount] = useState();
     const [accountNumber, setAccountNumber] = useState();
     const [transactionTime, setTransactionTime] = useState();
+    const[searchValue,setSearchValue]= useState("");
     
-    useEffect(() => {
-        axios
-          .get("")
-          .then((response) => {
-            // setMovies(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(this.error);
-          });
-      });
+    
       const getTransByAccntNo = (event) => {
+        event.preventDefault();
         axios
-          .get("" + accountNumber)
+          .get("http://localhost:30140/api/Transaction/GetTransactions/" + accountNumber)
           .then((response) => {
             //(response.data);
             console.log(response.data);
@@ -38,16 +30,16 @@ function TransactionDetails(){
             setTransactionTime(response.data.transactionTime);
           })
           .catch((error) => {
-            console.log(this.error);
+            console.log(error);
           });
     
-        event.preventDefault();
+        
       };
     return (
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-                <div className='searchC'><SearchBar/></div>
+                <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/></div>
                 <h1 className="padd">Customer Transaction Details</h1>
                 <table className="table table-bordered">
                     <tr>
@@ -58,7 +50,7 @@ function TransactionDetails(){
                     <th>Account Number</th>
                     <th>transaction Time</th>
                     </tr>
-                    {data.map((d) => ( 
+                    {/* {data.map((d) => ( 
                     <tr>
                         <td>{type}</td>
                         <td>{cardNumber}</td>
@@ -67,7 +59,7 @@ function TransactionDetails(){
                         <td>{accountNumber}</td>
                         <td>{transactionTime}</td>
                     </tr>
-                     ))} 
+                     ))}  */}
                 </table>
             </div>
         </div>

@@ -15,23 +15,16 @@ function ViewCustomer() {
     const [pincode, setPincode] = useState();
     const [state, setState] = useState("");
     const [city, setCity] = useState("");
+    const[searchValue,setSearchValue]= useState("");
 
-    useEffect(() => {
-        axios
-          .get("")
-          .then((response) => {
-            // setMovies(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(this.error);
-          });
-      });
+
+  
       const getCustById = (event) => {
         axios
-          .get("" + custId)
+          .get("http://localhost:30140/api/Customer/GetCustomer/" + searchValue)
           .then((response) => {
             //(response.data);
+            console.log(searchValue);
             console.log(response.data);
             setName(response.data.name);
             setEmail(response.data.email);
@@ -45,7 +38,7 @@ function ViewCustomer() {
 
           })
           .catch((error) => {
-            console.log(this.error);
+            console.log(error);
           });
     
         event.preventDefault();
@@ -54,7 +47,7 @@ function ViewCustomer() {
         <div className='rowC'>
         <Snavbar />
         <div className='colnC'>
-                <div className='searchC'><SearchBar/></div>
+                <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById}/></div>
                 <button onClick={getCustById} style={{ margin: "10px" }}>
                 Search
               </button>

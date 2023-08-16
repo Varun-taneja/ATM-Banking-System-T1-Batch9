@@ -75,10 +75,10 @@ function CreateCustomer(){
                             <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridContact">
+                            {/* <Form.Group as={Col} controlId="formGridContact">
                             <Form.Label>Contact Number</Form.Label>
                             <Form.Control type="Contact" placeholder="xxxxxxxxxx"  value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
-                            </Form.Group>
+                            </Form.Group> */}
                         </Row>
 
                         <Row className="mb-3">
