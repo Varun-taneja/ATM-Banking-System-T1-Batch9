@@ -41,7 +41,7 @@ function App() {
             <Route path='/transaction-details' element={<TransactionDetails />} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/balance' element={<BalanceCheck />} />
-            <Route path='/view-customer' element={<ViewCustomer />} />
+            <Route path='/view-customer' element={<ViewCustomer token={token}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

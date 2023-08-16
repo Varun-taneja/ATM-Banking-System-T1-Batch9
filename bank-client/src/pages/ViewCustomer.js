@@ -5,7 +5,7 @@ import SearchBar from '../components/Searchbar';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function ViewCustomer() {
+function ViewCustomer({token}) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState();
@@ -20,8 +20,11 @@ function ViewCustomer() {
 
   
       const getCustById = (event) => {
+        event.preventDefault();
         axios
-          .get("http://localhost:30140/api/Customer/GetCustomer/" + searchValue)
+          .get("http://localhost:30140/api/Customer/GetCustomer/" + searchValue,{
+            headers: { Authorization: `Bearer ${token}` }
+            })
           .then((response) => {
             //(response.data);
             console.log(searchValue);
@@ -41,7 +44,7 @@ function ViewCustomer() {
             console.log(error);
           });
     
-        event.preventDefault();
+        //event.preventDefault();
       };
     return (
         <div className='rowC'>

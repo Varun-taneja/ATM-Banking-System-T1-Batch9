@@ -11,7 +11,7 @@ function BalanceCheck(){
  
       const getBalByAccntNo = (event) => {
         axios
-          .get("" + accountNumber)
+          .get("http://localhost:30140/api/Balance/GetBalance/" + accountNumber)
           .then((response) => {
             //(response.data);
             console.log(response.data);
