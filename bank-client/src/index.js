@@ -1,43 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Home from './Home';
-import CreateCustomer from './pages/CreateCustomer';
-import ViewCustomer from './pages/ViewCustomer';
-import TransactionDetails from './pages/TransactionDetails';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import CustomerCardDetails from './pages/CustomerCardDetails';
-import BalanceCheck from './pages/BalanceCheck';
-import AddCustomerDetails from './pages/AddCustomerDetails';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import InvalidRoute from './components/InvalidRoute';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path='/' element={<Home />}></Route> */}
-        <Route path='/' element={<Login />}></Route>
-        <Route path='/home' element={<App />}></Route>
-        {/* customer routes */}
-        <Route path='/create-customer-details' element={<CreateCustomer />} />
-        <Route path='/edit-customer-details' element={<AddCustomerDetails />} />
-        <Route path='/transaction-details' element={<TransactionDetails />} />
-        <Route path='/customer-card-details' element={<CustomerCardDetails />} />
-        <Route path='/balance' element={<BalanceCheck />} />
-        <Route path='/view-customer' element={<ViewCustomer />} />
-        {/* admin routes */}
-        {/* <Route path='/register-admin' element={<Register />} /> */}
-        {/* <Route path='/login-admin' element={<Login />} /> */}
-
-        {/* Handling invalid routes */}
-        <Route path='*' element={<InvalidRoute />}/>
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 

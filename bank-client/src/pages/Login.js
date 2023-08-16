@@ -1,8 +1,9 @@
 import "../Login.css";
 import React, { useRef, useState } from "react"
+import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
-function Login() {
+function Login({setToken}) {
     const emailRef = useRef()
     const idRef = useRef()
     const passwordRef = useRef()
@@ -10,7 +11,6 @@ function Login() {
     const loginEmailRef = useRef()
     const loginPasswordRef = useRef()
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
 
     async function handleSignUp(e) {
         e.preventDefault()
@@ -21,7 +21,7 @@ function Login() {
 
         try {
             setLoading(true)
-            navigate("/")
+            // navigate("/")
         } catch (err) {
             alert(err.message.substring(
                 err.message.indexOf(":") + 1,
@@ -36,11 +36,26 @@ function Login() {
 
         try {
             setLoading(true)
-            navigate("/home")
+            const loginData = {
+                userName: loginEmailRef.current.value,
+                password: loginPasswordRef.current.value
+            }
+            const res = await axios.post("http://localhost:30140/api/Auth",loginData,{ 
+                headers: {'Content-Type': 'application/json'}})
+            console.log(res.data)
+            localStorage.setItem("token",res.data.token)
+            if(res.data.token){
+                console.log(setToken)
+                setToken(res.data.token)
+            }else{
+                alert("Invalid Credentials!!")
+            }
+            
         } catch(err) {
-            alert(err.message.substring(
-                err.message.indexOf(":") + 1,
-                err.message.lastIndexOf("(")))
+            console.log(err)
+            // alert(err.message.substring(
+            //     err.message.indexOf(":") + 1,
+            //     err.message.lastIndexOf("(")))
         }
 
         setLoading(false)
