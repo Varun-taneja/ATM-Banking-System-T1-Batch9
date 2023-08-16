@@ -46,38 +46,43 @@ function ViewCustomer() {
     return (
         <div className='rowC'>
         <Snavbar />
+        
         <div className='colnC'>
+                <h1 className='titleC'>View Customer Details</h1>
                 <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById}/></div>
-                <button onClick={getCustById} style={{ margin: "10px" }}>
-                Search
-              </button>
-                <h1 className='padd'>View Customer Details</h1>
-                <table className="table table-bordered">
-                    <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Customer ID</th>
-                    <th>Account Number</th>
-                    <th>Address</th>
-                    <th>Pincode</th>
-                    <th>State</th>
-                    <th>City</th>
-                    </tr>
-                    {/* {data.map((d) => ( */}
-                    <tr>
-                        <td>{name}</td>
-                        <td>{email}</td>
-                        <td>{contact}</td>
-                        <td>{custId}</td>
-                        <td>{accountNumber}</td>
-                        <td>{address}</td>
-                        <td>{pincode}</td>
-                        <td>{state}</td>
-                        <td>{city}</td>
-                    </tr>
-                    {/* ))} */}
-                </table>
+                {/* <button onClick={getCustById} style={{ margin: "10px" }}>
+                  Search
+                </button> */}
+                
+                <div className='padd'> 
+                  <table width="100vw" className="table table-bordered">
+                      <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Contact</th>
+                      <th>Customer ID</th>
+                      <th>Account Number</th>
+                      <th>Address</th>
+                      <th>Pincode</th>
+                      <th>State</th>
+                      <th>City</th>
+                      </tr>
+                      {/* {data.map((d) => ( */}
+                      <tr>
+                          <td>{name}</td>
+                          <td>{email}</td>
+                          <td>{contact}</td>
+                          <td>{custId}</td>
+                          <td>{accountNumber}</td>
+                          <td>{address}</td>
+                          <td>{pincode}</td>
+                          <td>{state}</td>
+                          <td>{city}</td>
+                      </tr>
+                      {/* ))} */}
+                  </table>
+                </div>
+                
             </div>
         
     </div>

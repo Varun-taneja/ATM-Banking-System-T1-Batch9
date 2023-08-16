@@ -50,6 +50,7 @@ function CustomerCardDetails(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
+            <h1 className="titleC">Customer Card Details</h1>
                 <div className='searchC'><SearchBar/></div>
                 <div classname="padd">
                     <MDBContainer fluid className="py-5 gradient-custom">

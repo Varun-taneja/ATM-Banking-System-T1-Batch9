@@ -39,28 +39,30 @@ function TransactionDetails(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
+                <h1 className="titleC">Customer Transaction Details</h1>
                 <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/></div>
-                <h1 className="padd">Customer Transaction Details</h1>
-                <table className="table table-bordered">
-                    <tr>
-                    <th>Type</th>
-                    <th>Card Number</th>
-                    <th>Region</th>
-                    <th>Amount</th>
-                    <th>Account Number</th>
-                    <th>transaction Time</th>
-                    </tr>
-                    {/* {data.map((d) => ( 
-                    <tr>
-                        <td>{type}</td>
-                        <td>{cardNumber}</td>
-                        <td>{region}</td>
-                        <td>{amount}</td>
-                        <td>{accountNumber}</td>
-                        <td>{transactionTime}</td>
-                    </tr>
-                     ))}  */}
-                </table>
+                <div className='padd'> 
+                  <table className="table table-bordered">
+                      <tr>
+                      <th>Type</th>
+                      <th>Card Number</th>
+                      <th>Region</th>
+                      <th>Amount</th>
+                      <th>Account Number</th>
+                      <th>Transaction Time</th>
+                      </tr>
+                      {/* {data.map((d) => ( 
+                      <tr>
+                          <td>{type}</td>
+                          <td>{cardNumber}</td>
+                          <td>{region}</td>
+                          <td>{amount}</td>
+                          <td>{accountNumber}</td>
+                          <td>{transactionTime}</td>
+                      </tr>
+                      ))}  */}
+                  </table>
+                </div>
             </div>
         </div>
     )
