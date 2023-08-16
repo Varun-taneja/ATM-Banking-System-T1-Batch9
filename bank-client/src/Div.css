@@ -2,7 +2,7 @@
 
 .formC{position: inherit; padding: 4em;}
 
-.colnC{display:flex; flex-direction:column;}
+.colnC{display:flex; flex-direction:column; width: 100vw;}
 
 .searchC{margin-left: auto; 
     margin-right: 0;
@@ -10,5 +10,10 @@
     }
 
 .padd{
-    padding: 5em;
+    padding: 5%;
+}
+
+.titleC{
+    padding-left: 30%;
+    padding-top: 3%;
 }

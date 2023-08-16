@@ -29,21 +29,23 @@ function BalanceCheck(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
+              <h1 className="titleC">Customer Balance Details</h1>
                 <div className='searchC'><SearchBar/></div>
-                <h1 className="padd">Customer Balance Details</h1>
-                <table className="table table-bordered">
-                    <tr>
-                    <th>Account Number</th>
-                    <th>Account Balance</th>
-                    </tr>
-                    {/* {data.map((d) => ( */}
-                    <tr>
-                        <td>{accountNumber}</td>
-                        <td>{accountBalance}</td>
-                        
-                    </tr>
-                    {/* ))} */}
-                </table>
+                <div className='padd'> 
+                  <table className="table table-bordered">
+                      <tr>
+                      <th>Account Number</th>
+                      <th>Account Balance</th>
+                      </tr>
+                      {/* {data.map((d) => ( */}
+                      <tr>
+                          <td>{accountNumber}</td>
+                          <td>{accountBalance}</td>
+                          
+                      </tr>
+                      {/* ))} */}
+                  </table>
+                </div>
             </div>
         </div>
     )

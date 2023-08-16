@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Snavbar from '../components/Snavbar'
 import "../Div.css"
 import Button from 'react-bootstrap/Button';
@@ -9,17 +9,34 @@ import Nform from '../components/Nform';
 import Searchbar from '../components/Searchbar';
 const axios = require('axios').default;
 function AddCustomerDetails() {
-    // const emailRef = useRef()
-    // const contactRef = useRef()
-    // const addressRef = useRef()
-    // const pincodeRef = useRef()
-    // const NameRef = useRef()
-    // const accountNumRef = useRef()
-    // const custIdRef = useRef()
-    // const accountType = useRef()
-    // const [loading, setLoading] = useState(false)
-    // const navigate = useNavigate()
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [contact, setContact] = useState();
+    const [custId, setCustId] = useState();
+    const [accountNumber, setAccountNumber] = useState();
+    const [address, setAddress] = useState("");
+    const [pincode, setPincode] = useState();
+    const [state, setState] = useState("");
+    const [city, setCity] = useState("");
+   
 
+    
+
+    const updatedPost = {
+        
+    };
+
+    const sendPutRequest = async () => {
+        try {
+            const resp = await axios.put('', updatedPost);
+            console.log(resp.data);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
+
+    
     
 
     // const sendRequest = async () => {
@@ -47,33 +64,61 @@ function AddCustomerDetails() {
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-                <div className='searchC'><Searchbar/></div>
+                <h1 className='titleC'>Edit/Add Customer Details</h1>
                 <div className="formC">
                     <Form>
                         <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="name" placeholder="Enter Your Full Name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+                            </Form.Group>
+
+                            {/* <Form.Group as={Col} controlId="formGridContact">
+                            <Form.Label>Contact Number</Form.Label>
+                            <Form.Control type="Contact" placeholder="xxxxxxxxxx"  value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
+                            </Form.Group> */}
+                        </Row>
+                        <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridContact">
                             <Form.Label>Contact Number</Form.Label>
-                            <Form.Control type="Contact" placeholder="xxxxxxxxxx" />
+                            <Form.Control type="Contact" placeholder="xxxxxxxxxx"  value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="formGridCustomerId">
+                            <Form.Label>Customer ID</Form.Label>
+                            <Form.Control type="" placeholder="xxxxxxxxxx" value={custId} onChange={(e)=>{setCustId(e.target.value)}}/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridAccountNo">
+                            <Form.Label>Account Number</Form.Label>
+                            <Form.Control type="Contact" placeholder="xxxxxxxxxx" value={accountNumber} onChange={(e)=>{setAccountNumber((e.target.value))}}/>
                             </Form.Group>
                         </Row>
                             
                         <Form.Group className="mb-3" controlId="formGridAddress1">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="Full Address" />
+                            <Form.Control placeholder="Full Address" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
                         </Form.Group>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label>City</Form.Label>
-                            <Form.Control />
+                            <Form.Control value={city} onChange={(e)=>{setCity(e.target.value)}}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridState">
+                            <Form.Label>State</Form.Label>
+                            <Form.Control value={state} onChange={(e)=>{setState(e.target.value)}}/>
+                            </Form.Group>
+
+                            {/* <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
                             <Form.Select defaultValue="Choose...">
                                 <option>Choose...</option>
@@ -105,11 +150,11 @@ function AddCustomerDetails() {
                                 <option>...</option>
                                 <option>...</option>
                             </Form.Select>
-                            </Form.Group>
+                            </Form.Group> */}
 
                             <Form.Group as={Col} controlId="formGridPincode">
                             <Form.Label>Pincode</Form.Label>
-                            <Form.Control />
+                            <Form.Control value={pincode} onChange={(e)=>{setPincode(e.target.value)}} />
                             </Form.Group>
                         </Row>
 
@@ -117,7 +162,7 @@ function AddCustomerDetails() {
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" onClick={sendPutRequest}>
                             Submit
                         </Button>
                         </Form>
