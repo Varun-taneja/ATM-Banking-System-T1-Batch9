@@ -29,10 +29,10 @@ function ViewCustomer({token}) {
             //(response.data);
             console.log(searchValue);
             console.log(response.data);
-            setName(response.data.name);
+            setName(response.data.customerName);
             setEmail(response.data.email);
             setContact(response.data.contact);
-            setCustId(response.data.custId);
+            setCustId(response.data.customerID);
             setAccountNumber(response.data.accountNumber);
             setAddress(response.data.address);
             setPincode(response.data.pincode);
@@ -67,8 +67,8 @@ function ViewCustomer({token}) {
                       <th>Account Number</th>
                       <th>Address</th>
                       <th>Pincode</th>
-                      <th>State</th>
-                      <th>City</th>
+                      {/* <th>State</th> */}
+                      {/* <th>City</th> */}
                       </tr>
                       {/* {data.map((d) => ( */}
                       <tr>
@@ -79,8 +79,8 @@ function ViewCustomer({token}) {
                           <td>{accountNumber}</td>
                           <td>{address}</td>
                           <td>{pincode}</td>
-                          <td>{state}</td>
-                          <td>{city}</td>
+                          {/* <td>{state}</td> */}
+                          {/* <td>{city}</td> */}
                       </tr>
                       {/* ))} */}
                   </table>

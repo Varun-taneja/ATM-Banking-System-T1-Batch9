@@ -22,12 +22,11 @@ function CreateCustomer(){
 
     async function handleSubmit(e) {
         const data = {
-            name,
             email,
             contact,
             customerID:parseInt(custId),
             accountType:"Savings",
-            customerName:"Jack",
+            customerName:name,
             accountNumber:parseInt(accountNumber),
             address,
             pincode:parseInt(pincode),
@@ -42,7 +41,7 @@ function CreateCustomer(){
         try {
             console.log(data)
             const res = await axios.post('http://localhost:30140/api/Customer/AddCustomer', data,{ 
-                headers: {'Content-Type': 'application/json'}})
+                headers: {'Content-Type': 'application/json', }})
             console.log(res)
             
         } catch (err) {
@@ -101,15 +100,15 @@ function CreateCustomer(){
                         </Form.Group>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridCity">
+                            {/* <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label>City</Form.Label>
                             <Form.Control value={city} onChange={(e)=>{setCity(e.target.value)}}/>
-                            </Form.Group>
+                            </Form.Group> */}
 
-                            <Form.Group as={Col} controlId="formGridState">
+                            {/* <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
                             <Form.Control value={state} onChange={(e)=>{setState(e.target.value)}}/>
-                            </Form.Group>
+                            </Form.Group> */}
 
                             {/* <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
