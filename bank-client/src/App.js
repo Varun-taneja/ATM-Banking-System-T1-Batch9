@@ -13,6 +13,7 @@ import InvalidRoute from './components/InvalidRoute';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
+  const [customerData, setCustomerData] = useState();
 
   useEffect(() => {
     const authToken = localStorage.getItem("token");
@@ -37,11 +38,11 @@ function App() {
             {/* <Route path='/home' element={<Home />}></Route> */}
             {/* customer routes */}
             <Route path='/create-customer-details' element={<CreateCustomer />} />
-            <Route path='/edit-customer-details' element={<AddCustomerDetails />} />
+            <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails />} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/balance' element={<BalanceCheck />} />
-            <Route path='/view-customer' element={<ViewCustomer token={token}/>} />
+            <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

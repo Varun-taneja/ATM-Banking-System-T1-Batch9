@@ -4,8 +4,11 @@ import "../Div.css"
 import SearchBar from '../components/Searchbar';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 
-function ViewCustomer({token}) {
+
+function ViewCustomer({token, setCustomerData}) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState();
@@ -17,6 +20,7 @@ function ViewCustomer({token}) {
     const [city, setCity] = useState("");
     const[searchValue,setSearchValue]= useState("");
 
+    const navigate = useNavigate();
 
   
       const getCustById = (event) => {
@@ -27,6 +31,7 @@ function ViewCustomer({token}) {
             })
           .then((response) => {
             //(response.data);
+            setCustomerData(response.data)
             console.log(searchValue);
             console.log(response.data);
             setName(response.data.customerName);
@@ -46,6 +51,12 @@ function ViewCustomer({token}) {
     
         //event.preventDefault();
       };
+
+      const editCustomer = ()=>{
+
+        navigate('/edit-customer-details')
+      }
+
     return (
         <div className='rowC'>
         <Snavbar />
@@ -67,7 +78,7 @@ function ViewCustomer({token}) {
                       <th>Account Number</th>
                       <th>Address</th>
                       <th>Pincode</th>
-                      {/* <th>State</th> */}
+                      <th>Edit</th>
                       {/* <th>City</th> */}
                       </tr>
                       {/* {data.map((d) => ( */}
@@ -79,7 +90,7 @@ function ViewCustomer({token}) {
                           <td>{accountNumber}</td>
                           <td>{address}</td>
                           <td>{pincode}</td>
-                          {/* <td>{state}</td> */}
+                          <td><Button onClick={editCustomer}>Edit</Button></td>
                           {/* <td>{city}</td> */}
                       </tr>
                       {/* ))} */}

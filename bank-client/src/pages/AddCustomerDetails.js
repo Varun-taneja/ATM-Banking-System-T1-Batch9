@@ -8,27 +8,32 @@ import Row from 'react-bootstrap/Row';
 import Nform from '../components/Nform';
 import Searchbar from '../components/Searchbar';
 const axios = require('axios').default;
-function AddCustomerDetails() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [contact, setContact] = useState();
-    const [custId, setCustId] = useState();
-    const [accountNumber, setAccountNumber] = useState();
-    const [address, setAddress] = useState("");
-    const [pincode, setPincode] = useState();
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
-   
+function AddCustomerDetails({customerData}) {
+    const [name, setName] = useState(customerData.customerName);
+    const [email, setEmail] = useState(customerData.email);
+    const [contact, setContact] = useState(customerData.contact);
+    const [custId, setCustId] = useState(customerData.customerID);
+    const [accountNumber, setAccountNumber] = useState(customerData.accountNumber);
+    const [address, setAddress] = useState(customerData.address);
+    const [pincode, setPincode] = useState(customerData.pincode);
+ 
+    
 
     
 
-    const updatedPost = {
-        
-    };
-
     const sendPutRequest = async () => {
+        const updatedCustomer = {
+            email,
+            contact,
+            customerID:parseInt(custId),
+            accountType:"Savings",
+            customerName:name,
+            accountNumber:parseInt(accountNumber),
+            address,
+            pincode:parseInt(pincode),
+        };
         try {
-            const resp = await axios.put('', updatedPost);
+            const resp = await axios.put('http://localhost:30140/api/Customer/EditCustomer', updatedCustomer);
             console.log(resp.data);
         } catch (err) {
             // Handle Error Here
@@ -108,15 +113,7 @@ function AddCustomerDetails() {
                         </Form.Group>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control value={city} onChange={(e)=>{setCity(e.target.value)}}/>
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>State</Form.Label>
-                            <Form.Control value={state} onChange={(e)=>{setState(e.target.value)}}/>
-                            </Form.Group>
+                        
 
                             {/* <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
@@ -163,7 +160,7 @@ function AddCustomerDetails() {
                         </Form.Group>
 
                         <Button variant="primary" type="submit" onClick={sendPutRequest}>
-                            Submit
+                            Edit Details
                         </Button>
                         </Form>
                 </div>
