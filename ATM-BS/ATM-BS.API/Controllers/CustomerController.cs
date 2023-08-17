@@ -46,7 +46,7 @@ namespace ATM_BS.API.Controllers
             }
         }
 
-        [HttpGet,Route("GetCustomer/{id}")]
+        [HttpGet,Route("GetCustomer/{id}"),Authorize]
         public IActionResult GetCustomer(int id)
         {
             try
