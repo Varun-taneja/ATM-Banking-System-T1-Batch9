@@ -3,39 +3,176 @@ import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
-import CashWithdraw from "../components/CashWithdraw";
-function CashWithdrawing(){
+import DenominationItem from "../components/Denomination";
+import CashWithdrawal from "../components/CashWithdrawal";
+import { useNavigate } from 'react-router';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
-    // const [accountNumber, setAccountNumber] = useState()
-    // const [accountBalance, setAccountBalance ] = useState()
+function CashWithdrawing({ token, setCustomerData }){
 
- 
-    //   const getBalByAccntNo = (event) => {
-    //     axios
-    //       .get("http://localhost:30140/api/Balance/GetBalance/" + accountNumber)
-    //       .then((response) => {
-    //         //(response.data);
-    //         console.log(response.data);
-    //         setAccountNumber(response.data.accountNumber);
-    //         setAccountBalance(response.data.accountBalance);
+    // const balanceChange = value => {
+    //     setBalance = prevState.money - total,
+    // }
+  
 
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
+    const denominationsList = [
+        {
+          id: 1,
+          value: 50,
+        },
+        {
+          id: 2,
+          value: 100,
+        },
+        {
+          id: 3,
+          value: 200,
+        },
+        {
+          id: 4,
+          value: 500,
+        },
+      ]
+    const [name, setName] = useState("");
+    const [balance, setBalance] = useState();
+    const [total, setTotal] = useState();
+    // const [checkTotal, setCheckTotal] = useState();
+    const [searchValue, setSearchValue] = useState("");
+    const [fiveHundred, setFiveHundred] = useState();
+    const [twoHundred, setTwoHundred] = useState();
+    const [hundred, setHundred] = useState();
+    const [fifty, setFifty] = useState();
+
+
+    const navigate = useNavigate();
+
+    const getBalById = (event) => {
+        event.preventDefault();
+        axios
+          .get("" + searchValue, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+          .then((response) => {
+            //(response.data);
+            setCustomerData(response.data)
+            console.log(searchValue);
+            console.log(response.data);
+            setName(response.data.customerName);
+            setBalance(response.data.balance);    
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     
-    //     event.preventDefault();
-    //   };
+        //event.preventDefault();
+      };
+
+      async function handleSubmit(e) {
+        const checkTotal = 500*parseInt(fiveHundred) + 200*parseInt(twoHundred) + 100*parseInt(hundred)+ 50*parseInt(fifty);
+        // if(checkTotal> balance){
+        //     alert("total is greater than balance")
+        //     return;
+        // }
+        
+        const newBalance = balance - checkTotal
+        e.preventDefault()
+
+        // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+        //     return alert("Passwords do not match")
+        // }
+
+        try {
+            console.log(checkTotal)
+            // const res = await axios.put('', newBalance ,{ 
+            //     headers: {'Content-Type': 'application/json', }})
+            // console.log(res)
+
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+        // setLoading(false)
+    }
     return (
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-              <h1 className="titleC">Cash Withrawal</h1>
-                <div className='searchC'><SearchBar/></div>
+                <div className="rowC">
+                    <h1 className="titleC">Cash Withrawal</h1>
+                    <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getBalById} /></div>
+                </div>
                 <div className='padd'> 
-                  <CashWithdraw />
+                  {/* <CashWithdraw /> */}
+                  {/* <CashWithdrawal denominationsList={denominationsList} /> */}
+                  <div className="main-container">
+                        <div className="inner-container">
+                        <div className="heading-container">
+                            <div className="para-div">
+                            <p className="s">{name.charAt[0]}</p>
+                            </div>
+                            <p className="name-para">{name}</p>
+                        </div>
+                        <div className="money-container">
+                            <p className="balance-name">BALANCE</p>
+                            <div className="balance-holder">
+                            <p className="amount">{balance}</p>
+                            </div>
+                        </div>
+                        <p className="rupees">In Rupees</p>
+                        <p className="withdraw">WITHDRAW</p>
+                        <p className="choose">CHOOSE SUM (IN RUPEES)</p>
+
+                        {/* <ul className="items-holder">
+                            {denominationsList.map(eachObject => (
+                            <DenominationItem
+                                key={eachObject.id}
+                                value={eachObject.value}
+                                stateChange={this.stateChange}
+                            />
+                            ))}
+                        </ul> */}
+
+                        <div className="formC">
+                            <Form>
+                            <Row className="mb-3">
+                                <Form.Group as={Col} controlId="formGridFifty">
+                                <Form.Label>50</Form.Label>
+                                <Form.Control type="number" placeholder="Enter No." value={fifty} onChange={(e)=>{setFifty(e.target.value)}}/>
+                                </Form.Group>
+                                
+                                <Form.Group as={Col} controlId="formGridHundred">
+                                <Form.Label>100</Form.Label>
+                                <Form.Control type="number" placeholder="Enter No."  value={hundred} onChange={(e)=>{setHundred(e.target.value)}}/>
+                                </Form.Group>
+                            </Row>
+                            <Row className="mb-3">
+                                <Form.Group as={Col} controlId="formGridTwoHundred">
+                                <Form.Label>200</Form.Label>
+                                <Form.Control type="number" placeholder="Enter No." value={twoHundred} onChange={(e)=>{setTwoHundred(e.target.value)}}/>
+                                </Form.Group>
+
+                                <Form.Group as={Col} controlId="formGridFiveHundred">
+                                <Form.Label>500</Form.Label>
+                                <Form.Control type="number" placeholder="Enter No." value={fiveHundred} onChange={(e)=>{setFiveHundred(e.target.value)}}/>
+                                </Form.Group>
+                                    <button className="btn" type="button" onClick={handleSubmit}>
+                                        Submit
+                                    </button>
+
+                                
+                            </Row>
+
+        
+                            </Form>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

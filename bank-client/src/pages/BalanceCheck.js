@@ -29,8 +29,11 @@ function BalanceCheck(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-              <h1 className="titleC">Customer Balance Details</h1>
+              <div className="rowC">
+                <h1 className="titleC">Customer Balance Details</h1>
                 <div className='searchC'><SearchBar/></div>
+              </div>
+              
                 <div className='padd'> 
                   <table className="table table-bordered">
                       <tr>

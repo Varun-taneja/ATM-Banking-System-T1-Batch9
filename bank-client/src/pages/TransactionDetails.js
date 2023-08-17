@@ -39,8 +39,11 @@ function TransactionDetails(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-                <h1 className="titleC">Customer Transaction Details</h1>
-                <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/></div>
+                <div className="rowC">
+                  <h1 className="titleC">Transaction Details</h1>
+                  <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/></div>
+                </div>
+                
                 <div className='padd'> 
                   <table className="table table-bordered">
                       <tr>
