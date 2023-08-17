@@ -47,8 +47,8 @@ const Snavbar = () => {
               <CDBSidebarMenuItem icon="chart-line">Customer Transaction Details</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="exclamation-circle">LOGOUT</CDBSidebarMenuItem>
+            <NavLink exact to="/" target="_blank" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="exclamation-circle" onClick={()=>localStorage.removeItem("token")}>LOGOUT</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

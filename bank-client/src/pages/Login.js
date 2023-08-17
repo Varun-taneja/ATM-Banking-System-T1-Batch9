@@ -2,8 +2,11 @@ import "../Login.css";
 import React, { useRef, useState } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login({setToken}) {
+    const nameRef = useRef() 
     const emailRef = useRef()
     const idRef = useRef()
     const passwordRef = useRef()
@@ -21,11 +24,32 @@ function Login({setToken}) {
 
         try {
             setLoading(true)
+            const regData={
+                id:parseInt(idRef.current.value),
+                name:nameRef.current.value,
+                password:passwordRef.current.value,
+                email:emailRef.current.value
+            }
+            console.log(regData)
+            const res = await axios.post('http://localhost:30140/api/Auth/AddAdmin', regData);
+            toast.success('Registration Successfull!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            idRef.current.value="";
+            nameRef.current.value="";
+            emailRef.current.value="";
+            passwordConfirmRef.current.value="";
+            passwordRef.current.value="";
             // navigate("/")
         } catch (err) {
-            alert(err.message.substring(
-                err.message.indexOf(":") + 1,
-                err.message.lastIndexOf("(")))
+            console.log(err)
         }
 
         setLoading(false)
@@ -37,7 +61,7 @@ function Login({setToken}) {
         try {
             setLoading(true)
             const loginData = {
-                userName: loginEmailRef.current.value,
+                email: loginEmailRef.current.value,
                 password: loginPasswordRef.current.value
             }
             const res = await axios.post("http://localhost:30140/api/Auth",loginData,{ 
@@ -64,12 +88,17 @@ function Login({setToken}) {
     return (
         <div>
             {/* <h3 style={{color:'black'}}>ATM Banking System</h3> */}
+            <ToastContainer />
             <div className="Authentication">
                 <div className="main">
                     <input type="checkbox" id="chk" />
                     <div className="signup">
                         <form onSubmit={handleSignUp}>
                             <label for="chk" className="sig">REGISTER</label>
+                            <div className="user-box">
+                                <input type="text" title="Name" ref={nameRef} required />
+                                <label>EMPLOYEE NAME</label>
+                            </div>
                             <div className="user-box">
                                 <input type="text" title="Email" ref={emailRef} required />
                                 <label>EMPLOYEE EMAIL</label>
@@ -94,8 +123,8 @@ function Login({setToken}) {
                         <form onSubmit={handleLogin}>
                             <label for="chk" className="log">LOGIN</label>
                             <div className="user-box">
-                                <input type="text" title="Enter Username" ref={loginEmailRef}  required />
-                                <label>USERNAME</label>
+                                <input type="text" title="Enter Email" ref={loginEmailRef}  required />
+                                <label>Email</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Enter password" ref={loginPasswordRef}  required />

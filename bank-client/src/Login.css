@@ -31,7 +31,7 @@
 
 .user-box {
     position: relative;
-    width: 60%;
+    width: 80%;
     margin: 0px auto;
 }
 
@@ -79,16 +79,17 @@
     top: 0px;
     left: 0px;
     font-size: 13px;
-    color: #c6c2c2;
+    color: #868686;
     pointer-events: none;
     transition: .5s;
 }
 
 .user-box input {
     padding: 10px 0;
-    font-size: 16px;
-    color: #2e2b2b;
-    margin-bottom: 30px;
+    width: 100%;
+    font-size: 13px;
+    color: #eee3e3;
+    margin-bottom: 15px;
     border: none;
     border-bottom: 1px solid #3b3737;
     outline: none;
@@ -97,9 +98,9 @@
 
 .user-box input:focus~label,
 .user-box input:valid~label {
-    top: -20px;
+    top: -17px;
     left: 0;
-    color: #2c2c28;
+    color: #e7e7e5;
     font-size: 12px;
     font-weight: bold;
 }
