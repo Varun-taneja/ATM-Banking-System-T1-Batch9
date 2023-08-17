@@ -69,39 +69,39 @@ function Login({setToken}) {
                     <input type="checkbox" id="chk" />
                     <div className="signup">
                         <form onSubmit={handleSignUp}>
-                            <label for="chk" className="sig">Register</label>
+                            <label for="chk" className="sig">REGISTER</label>
                             <div className="user-box">
                                 <input type="text" title="Email" ref={emailRef} required />
-                                <label>Employee Email</label>
+                                <label>EMPLOYEE EMAIL</label>
                             </div>
                             <div className="user-box">
                                 <input type="text" title="ID" ref={idRef} required />
-                                <label>Employee ID</label>
+                                <label>EMPLOYEE ID</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Admin password" ref={passwordRef}  required />
-                                <label>Admin Password</label>
+                                <label>NEW PASSWORD</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Confirm password" ref={passwordConfirmRef}  required />
-                                <label>Confirm Password</label>
+                                <label>CONFIRM PASSWORD</label>
                             </div>
-                            <button className="authBtn" disabled={loading} type="submit">Sign up</button>
+                            <button className="authBtn" disabled={loading} type="submit">SIGN UP</button>
                         </form>
                     </div>
 
                     <div className="login">
                         <form onSubmit={handleLogin}>
-                            <label for="chk" className="log">Login</label>
+                            <label for="chk" className="log">LOGIN</label>
                             <div className="user-box">
                                 <input type="text" title="Enter Username" ref={loginEmailRef}  required />
-                                <label>Username</label>
+                                <label>USERNAME</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Enter password" ref={loginPasswordRef}  required />
-                                <label>Password</label>
+                                <label>PASSWORD</label>
                             </div>
-                            <button className="authBtn" disabled={loading} type="submit">Login</button>
+                            <button className="authBtn" disabled={loading} type="submit">LOGIN</button>
                         </form>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 
 const Snavbar = () => {
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial',position:"fixed" }}>
+    <div style={{ display: 'flex', height: '100vh', width:'20vw', overflow: 'scroll initial',position:"fixed" }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
@@ -33,6 +33,9 @@ const Snavbar = () => {
             </NavLink>
             <NavLink exact to="/edit-customer-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Add Customer Details</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/cash-withdrawing" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Cash Withdrawal</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/balance" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="dollar-sign">Balance Check</CDBSidebarMenuItem>

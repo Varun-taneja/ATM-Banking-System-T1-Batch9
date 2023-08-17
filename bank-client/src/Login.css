@@ -56,13 +56,13 @@
 .login {
     height: 470px;
     background: #b4b4b8;
-    border-radius: 60% / 10%;
+    border-radius: 64% / 7%;
     transform: translateY(-180px);
     transition: .8s ease-in-out;
 }
 
 #chk:checked~.login {
-    transform: translateY(-530px);
+    transform: translateY(-540px);
 }
 
 #chk:checked~.login label {
@@ -78,7 +78,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    font-size: 16px;
+    font-size: 13px;
     color: #c6c2c2;
     pointer-events: none;
     transition: .5s;

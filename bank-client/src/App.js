@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CustomerCardDetails from './pages/CustomerCardDetails';
 import BalanceCheck from './pages/BalanceCheck';
 import AddCustomerDetails from './pages/AddCustomerDetails';
+import CashWithdrawing from './pages/CashWithdrawing';
 import Login from './pages/Login';
 import InvalidRoute from './components/InvalidRoute';
 function App() {
@@ -29,7 +30,7 @@ function App() {
   return (
     <React.Fragment>
   
-        {!token ?
+        {token ?
       <BrowserRouter>
 
         <Routes>
@@ -40,6 +41,7 @@ function App() {
             <Route path='/create-customer-details' element={<CreateCustomer />} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails />} />
+            <Route path='/cash-withdrawing' element={<CashWithdrawing />} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/balance' element={<BalanceCheck />} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
