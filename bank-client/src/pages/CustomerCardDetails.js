@@ -50,8 +50,10 @@ function CustomerCardDetails(){
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-            <h1 className="titleC">Customer Card Details</h1>
-                <div className='searchC'><SearchBar/></div>
+                <div className="rowC">
+                    <h1 className="titleC">Customer Card Details</h1>
+                    <div className='searchC'><SearchBar/></div>
+                </div>
                 <div classname="padd">
                     <MDBContainer fluid className="py-5 gradient-custom">
                         <MDBRow className="d-flex justify-content-center py-5">
@@ -101,9 +103,9 @@ function CustomerCardDetails(){
                                     />
                                     </MDBCol>
                                     <MDBCol size="3">
-                                    <MDBBtn color="info" rounded size="lg">
+                                    {/* <MDBBtn color="info" rounded size="lg">
                                         <MDBIcon fas icon="arrow-right" />
-                                    </MDBBtn>
+                                    </MDBBtn> */}
                                     </MDBCol>
                                 </MDBRow>
                                 </MDBCardBody>

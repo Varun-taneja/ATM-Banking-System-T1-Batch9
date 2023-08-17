@@ -31,9 +31,9 @@ const Snavbar = () => {
             <NavLink exact to="/view-customer" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">View Customer</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/edit-customer-details" activeClassName="activeClicked">
+            {/* <NavLink exact to="/edit-customer-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Add Customer Details</CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink> */}
             <NavLink exact to="/cash-withdrawing" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Cash Withdrawal</CDBSidebarMenuItem>
             </NavLink>

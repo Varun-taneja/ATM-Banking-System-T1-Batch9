@@ -65,8 +65,11 @@ function ViewCustomer({ token, setCustomerData }) {
       <Snavbar />
 
       <div className='colnC'>
-        <h1 className='titleC'>View Customer Details</h1>
-        <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
+        <div className='rowC'>
+          <h1 className='titleC'>View Customer Details</h1>
+          <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
+        </div>
+        
         {/* <button onClick={getCustById} style={{ margin: "10px" }}>
                   Search
                 </button> */}
