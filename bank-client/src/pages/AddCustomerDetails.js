@@ -7,7 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Nform from '../components/Nform';
 import Searchbar from '../components/Searchbar';
-const axios = require('axios').default;
+import { useNavigate } from 'react-router';
+import axios from 'axios'
 function AddCustomerDetails({customerData}) {
     const [name, setName] = useState(customerData.customerName);
     const [email, setEmail] = useState(customerData.email);
@@ -16,25 +17,29 @@ function AddCustomerDetails({customerData}) {
     const [accountNumber, setAccountNumber] = useState(customerData.accountNumber);
     const [address, setAddress] = useState(customerData.address);
     const [pincode, setPincode] = useState(customerData.pincode);
- 
+
+    const navigate = useNavigate();
     
 
     
 
-    const sendPutRequest = async () => {
-        const updatedCustomer = {
-            email,
-            contact,
-            customerID:parseInt(custId),
-            accountType:"Savings",
-            customerName:name,
-            accountNumber:parseInt(accountNumber),
-            address,
-            pincode:parseInt(pincode),
-        };
+    const sendPutRequest = async (e) => {
+       e.preventDefault();
         try {
+            const updatedCustomer = {
+                email,
+                contact,
+                customerID:parseInt(custId),
+                accountType:"Savings",
+                customerName:name,
+                accountNumber:parseInt(accountNumber),
+                address,
+                pincode:parseInt(pincode),
+            };
+            console.log(updatedCustomer);
             const resp = await axios.put('http://localhost:30140/api/Customer/EditCustomer', updatedCustomer);
             console.log(resp.data);
+            navigate('/view-customer');
         } catch (err) {
             // Handle Error Here
             console.error(err);
@@ -159,7 +164,7 @@ function AddCustomerDetails({customerData}) {
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" onClick={sendPutRequest}>
+                        <Button variant="primary" type="button" onClick={sendPutRequest}>
                             Edit Details
                         </Button>
                         </Form>
