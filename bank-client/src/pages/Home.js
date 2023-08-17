@@ -8,7 +8,9 @@ function App() {
     // <Snavbar/>
     <div className='rowC'>
             <Snavbar />
-            <Carousel/>
+            <div className='colnC'>
+                <Carousel/>
+            </div>
     </div>
 
     // <div className="App">
