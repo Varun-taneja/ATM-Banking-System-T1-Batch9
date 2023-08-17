@@ -74,7 +74,7 @@ function AddCustomerDetails({customerData}) {
         <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-                <h1 className='titleC'>Edit/Add Customer Details</h1>
+                <h1 className='titleC'>Edit Customer Details</h1>
                 <div className="formC">
                     <Form>
                         <Row className="mb-3">

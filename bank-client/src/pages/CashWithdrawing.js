@@ -13,6 +13,7 @@ import Row from 'react-bootstrap/Row';
 
 function CashWithdrawing({ token, setCustomerData }){
 
+
     // const balanceChange = value => {
     //     setBalance = prevState.money - total,
     // }
@@ -36,7 +37,7 @@ function CashWithdrawing({ token, setCustomerData }){
           value: 500,
         },
       ]
-    const [name, setName] = useState("");
+    const [name, setName] = useState();
     const [balance, setBalance] = useState();
     const [total, setTotal] = useState();
     // const [checkTotal, setCheckTotal] = useState();
@@ -47,21 +48,22 @@ function CashWithdrawing({ token, setCustomerData }){
     const [fifty, setFifty] = useState();
 
 
+
     const navigate = useNavigate();
 
     const getBalById = (event) => {
         event.preventDefault();
         axios
-          .get("" + searchValue, {
+          .get("http://localhost:30140/api/Balance/GetBalance/" + searchValue, {
             headers: { Authorization: `Bearer ${token}` }
           })
           .then((response) => {
             //(response.data);
-            setCustomerData(response.data)
+            // setCustomerData(response.data)-
             console.log(searchValue);
             console.log(response.data);
-            setName(response.data.customerName);
-            setBalance(response.data.balance);    
+            setName(response.data.accountNumber);
+            setBalance(response.data.accountBalance);    
           })
           .catch((error) => {
             console.log(error);
@@ -78,6 +80,7 @@ function CashWithdrawing({ token, setCustomerData }){
         // }
         
         const newBalance = balance - checkTotal
+        alert(`INR ${checkTotal} will be withdrawn`)
         e.preventDefault()
 
         // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -86,6 +89,7 @@ function CashWithdrawing({ token, setCustomerData }){
 
         try {
             console.log(checkTotal)
+            setBalance(newBalance)
             // const res = await axios.put('', newBalance ,{ 
             //     headers: {'Content-Type': 'application/json', }})
             // console.log(res)
@@ -112,7 +116,7 @@ function CashWithdrawing({ token, setCustomerData }){
                         <div className="inner-container">
                         <div className="heading-container">
                             <div className="para-div">
-                            <p className="s">{name.charAt[0]}</p>
+                            <p className="s">A</p>
                             </div>
                             <p className="name-para">{name}</p>
                         </div>
@@ -136,7 +140,7 @@ function CashWithdrawing({ token, setCustomerData }){
                             ))}
                         </ul> */}
 
-                        <div className="formC">
+                        <div className="formC" style={{paddingTop:"1em"}}>
                             <Form>
                             <Row className="mb-3">
                                 <Form.Group as={Col} controlId="formGridFifty">
@@ -159,7 +163,7 @@ function CashWithdrawing({ token, setCustomerData }){
                                 <Form.Label>500</Form.Label>
                                 <Form.Control type="number" placeholder="Enter No." value={fiveHundred} onChange={(e)=>{setFiveHundred(e.target.value)}}/>
                                 </Form.Group>
-                                    <button className="btn" type="button" onClick={handleSubmit}>
+                                    <button className="btn-cash" type="button" onClick={handleSubmit}>
                                         Submit
                                     </button>
 

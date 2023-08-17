@@ -95,7 +95,7 @@
     margin-left: -40px;
   }
 
-  .btn {
+  .btn-cash {
     background-color: #515050;
     border-color: #c4c4c4;
     border-width: 1px;
@@ -106,11 +106,11 @@
     width: 150px;
     margin-top: 20px;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-left: 20%;
   }
 
-  .btn:hover{
+  .btn-cash:hover{
     color: #fff9f9;
     background-color: #060505 ;
   }

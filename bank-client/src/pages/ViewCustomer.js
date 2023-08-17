@@ -22,6 +22,7 @@ function ViewCustomer({ token, setCustomerData }) {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [flag,setFlag]= useState(false);
 
   const navigate = useNavigate();
 
@@ -34,7 +35,8 @@ function ViewCustomer({ token, setCustomerData }) {
       })
       .then((response) => {
         //(response.data);
-        setCustomerData(response.data)
+        setCustomerData(response.data);
+        setFlag(true);
         console.log(searchValue);
         console.log(response.data);
         setName(response.data.customerName);
@@ -73,7 +75,7 @@ function ViewCustomer({ token, setCustomerData }) {
         {/* <button onClick={getCustById} style={{ margin: "10px" }}>
                   Search
                 </button> */}
-        <div style={{marginRight:"0.2em"}}>
+        <div style={{marginRight:"0.2em",display: flag?'block':'none'}}>
           <MDBTable bordered>
             <MDBTableHead>
               <tr className='table-dark'>
