@@ -41,6 +41,32 @@ function FundTransfer({token}){
             setFlag = false;
             return;
           }
+          alert(`INR ${balance} is your current balance which is less than the amount you wish to transfer`)
+          
+        //event.preventDefault();
+      };
+
+      const handleTransfer = (event) => {
+        event.preventDefault();
+        const transactionDetails ={
+            FromAccountNumber: parseInt(senderaccountnumber),
+            ToAccountNumber: parseInt(receiveraccountnumber),
+            Amount: parseFloat(amount),
+        }
+        axios
+          .put("http://localhost:30140/api/FundTransfer/FundTransfer", transactionDetails,
+           {headers: { Authorization: `Bearer ${token}` }}
+          )
+          .then((response) => {
+            //(response.data);
+            // setCustomerData(response.data)-
+            console.log(senderaccountnumber);
+            console.log(response.data);   
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          alert(`INR ${amount} has been transferred`)
           
         //event.preventDefault();
       };
@@ -94,7 +120,7 @@ function FundTransfer({token}){
                                             </div>
                                         <br></br>
                                         <div className="d-grid">
-                                            <Button variant="dark" type="button" disabled={flag}>
+                                            <Button variant="dark" type="button" disabled={flag} onClick={handleTransfer}>
                                             Transfer
                                             </Button>
                                         </div>
