@@ -41,7 +41,7 @@ function App() {
             <Route path='/create-customer-details' element={<CreateCustomer />} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails />} />
-            <Route path='/cash-withdrawing' element={<CashWithdrawing />} />
+            <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/balance' element={<BalanceCheck />} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
