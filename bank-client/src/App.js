@@ -31,7 +31,7 @@ function App() {
   return (
     <React.Fragment>
   
-        {!token ?
+        {token ?
       <BrowserRouter>
 
         <Routes>
@@ -39,14 +39,14 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             {/* <Route path='/home' element={<Home />}></Route> */}
             {/* customer routes */}
-            <Route path='/create-customer-details' element={<CreateCustomer />} />
+            <Route path='/create-customer-details' element={<CreateCustomer token={token}/>} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails />} />
             <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
-            <Route path='/balance' element={<BalanceCheck />} />
+            <Route path='/balance' element={<BalanceCheck token={token}/>} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
-            <Route path='/transfer' element={<FundTransfer />} />
+            <Route path='/transfer' element={<FundTransfer token={token}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

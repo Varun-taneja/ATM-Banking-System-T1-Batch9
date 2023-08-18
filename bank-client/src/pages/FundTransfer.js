@@ -4,6 +4,8 @@ import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   InputGroup,
   Col,
@@ -28,20 +30,41 @@ function FundTransfer({token}){
             headers: { Authorization: `Bearer ${token}` }
           })
           .then((response) => {
-            //(response.data);
+            console.log(response.data);
             // setCustomerData(response.data)-
             console.log(senderaccountnumber);
             console.log(response.data);
-            setBalance(response.data.accountBalance);    
+            setBalance(response.data.accountBalance);   
+            if(response.data.accountBalance>amount){
+              toast.info(`INR ${amount} can now be transferred`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+              setFlag(false);
+              return;
+            } 
+            toast.warning(`INR ${response.data.accountBalance} is your current balance which is less than the amount you wish to transfer`, {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
+
           })
           .catch((error) => {
             console.log(error);
           });
-          if(balance>amount){
-            setFlag = false;
-            return;
-          }
-          alert(`INR ${balance} is your current balance which is less than the amount you wish to transfer`)
+          
           
         //event.preventDefault();
       };
@@ -61,18 +84,29 @@ function FundTransfer({token}){
             //(response.data);
             // setCustomerData(response.data)-
             console.log(senderaccountnumber);
-            console.log(response.data);   
+            console.log(response.data); 
+            toast.success(`INR ${amount} has been transferred`, {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
           })
           .catch((error) => {
             console.log(error);
           });
-          alert(`INR ${amount} has been transferred`)
+
           
         //event.preventDefault();
       };
 
     return (
         <div className='rowC'>
+              <ToastContainer/>
                 <Snavbar />
                 <div className='colnC'>
                 {/* <div className="rowC">
