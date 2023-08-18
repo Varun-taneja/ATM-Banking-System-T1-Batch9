@@ -12,6 +12,7 @@ import CashWithdrawing from './pages/CashWithdrawing';
 import Login from './pages/Login';
 import InvalidRoute from './components/InvalidRoute';
 import FundTransfer from './pages/FundTransfer';
+import ChequeDeposit from './pages/ChequeDeposit';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -47,6 +48,7 @@ function App() {
             <Route path='/balance' element={<BalanceCheck />} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
             <Route path='/transfer' element={<FundTransfer />} />
+            <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}
