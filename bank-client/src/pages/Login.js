@@ -72,7 +72,16 @@ function Login({setToken}) {
                 console.log(setToken)
                 setToken(res.data.token)
             }else{
-                alert("Invalid Credentials!!")
+                toast.error('Invalid Credentials!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
             }
             
         } catch(err) {

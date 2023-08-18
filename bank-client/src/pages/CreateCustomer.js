@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 // import Searchbar from '../components/Searchbar';
 import axios from 'axios';
 
-function CreateCustomer(){
+function CreateCustomer({token}){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState();
@@ -41,7 +41,7 @@ function CreateCustomer(){
         try {
             console.log(data)
             const res = await axios.post('http://localhost:30140/api/Customer/AddCustomer', data,{ 
-                headers: {'Content-Type': 'application/json', }})
+                headers: {'Content-Type': 'application/json',  Authorization: `Bearer ${token}`}})
             console.log(res)
             
         } catch (err) {

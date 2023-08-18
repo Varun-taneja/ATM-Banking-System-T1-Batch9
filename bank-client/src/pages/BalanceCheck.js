@@ -3,15 +3,18 @@ import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
-function BalanceCheck(){
+function BalanceCheck({token}){
 
     const [accountNumber, setAccountNumber] = useState()
     const [accountBalance, setAccountBalance ] = useState()
+    const [searchValue, setSearchValue] = useState()
 
  
       const getBalByAccntNo = (event) => {
         axios
-          .get("http://localhost:30140/api/Balance/GetBalance/" + accountNumber)
+          .get("http://localhost:30140/api/Balance/GetBalance/" + searchValue, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
           .then((response) => {
             //(response.data);
             console.log(response.data);
@@ -31,7 +34,7 @@ function BalanceCheck(){
             <div className='colnC'>
               <div className="rowC">
                 <h1 className="titleC">Customer Balance Details</h1>
-                <div className='searchC'><SearchBar/></div>
+                <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getBalByAccntNo}/></div>
               </div>
               
                 <div className='padd'> 

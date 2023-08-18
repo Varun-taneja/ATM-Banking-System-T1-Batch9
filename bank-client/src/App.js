@@ -40,15 +40,19 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             {/* <Route path='/home' element={<Home />}></Route> */}
             {/* customer routes */}
-            <Route path='/create-customer-details' element={<CreateCustomer />} />
+            <Route path='/create-customer-details' element={<CreateCustomer token={token}/>} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails />} />
             <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
-            <Route path='/balance' element={<BalanceCheck />} />
+            <Route path='/balance' element={<BalanceCheck token={token}/>} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
+<<<<<<< HEAD
             <Route path='/transfer' element={<FundTransfer />} />
             <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
+=======
+            <Route path='/transfer' element={<FundTransfer token={token}/>} />
+>>>>>>> 5c5cb0f0d2363eb03b1fc3a3815967d1b7a455c3
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

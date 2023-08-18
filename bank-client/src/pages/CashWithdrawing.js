@@ -111,9 +111,9 @@ function CashWithdrawing({ token, setCustomerData }) {
 
     const newTransaction = {
       accountNumber: parseInt(accountNo),
-      type: "Debit",
+      type: "D",
       "cardNumber": 12345678,
-      "region": "India",
+      "region": "I",
       "amount": parseInt(checkTotal)
     }
     try {
