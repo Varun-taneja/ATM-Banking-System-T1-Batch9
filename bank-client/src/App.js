@@ -11,6 +11,7 @@ import AddCustomerDetails from './pages/AddCustomerDetails';
 import CashWithdrawing from './pages/CashWithdrawing';
 import Login from './pages/Login';
 import InvalidRoute from './components/InvalidRoute';
+import FundTransfer from './pages/FundTransfer';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -30,7 +31,7 @@ function App() {
   return (
     <React.Fragment>
   
-        {token ?
+        {!token ?
       <BrowserRouter>
 
         <Routes>
@@ -45,6 +46,7 @@ function App() {
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/balance' element={<BalanceCheck />} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
+            <Route path='/transfer' element={<FundTransfer />} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}
