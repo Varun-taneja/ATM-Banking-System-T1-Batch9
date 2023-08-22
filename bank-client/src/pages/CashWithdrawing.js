@@ -110,11 +110,9 @@ function CashWithdrawing({ token, setCustomerData }) {
     const accountNo= name;
 
     const newTransaction = {
-      accountNumber: parseInt(accountNo),
-      type: "D",
-      "cardNumber": 12345678,
-      "region": "I",
-      "amount": parseInt(checkTotal)
+      fromAccountNumber: parseInt(accountNo),
+      toAccountNumber: null,
+      amount: parseInt(checkTotal)
     }
     try {
       console.log(checkTotal)

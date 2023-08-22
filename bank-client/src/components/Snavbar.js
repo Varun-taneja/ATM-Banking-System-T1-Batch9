@@ -37,8 +37,14 @@ const Snavbar = () => {
             <NavLink exact to="/cash-withdrawing" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Cash Withdrawal</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/mini-statement" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="chart-line">Mini Statment</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/balance" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="dollar-sign">Balance Check</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/pin-change" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Pin Change</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/customer-card-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="credit-card" iconType="solid">Customer Card Details</CDBSidebarMenuItem>

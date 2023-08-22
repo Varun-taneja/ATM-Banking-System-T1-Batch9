@@ -72,12 +72,13 @@ function FundTransfer({token}){
       const handleTransfer = (event) => {
         event.preventDefault();
         const transactionDetails ={
-            FromAccountNumber: parseInt(senderaccountnumber),
-            ToAccountNumber: parseInt(receiveraccountnumber),
-            Amount: parseFloat(amount),
+            fromAccountNumber: parseInt(senderaccountnumber),
+            toAccountNumber: parseInt(receiveraccountnumber),
+            amount: parseFloat(amount),
         }
+        console.log(transactionDetails)
         axios
-          .put("http://localhost:30140/api/FundTransfer/FundTransfer", transactionDetails,
+          .post("http://localhost:30140/api/Transaction/AddTransaction", transactionDetails,
            {headers: { Authorization: `Bearer ${token}` }}
           )
           .then((response) => {

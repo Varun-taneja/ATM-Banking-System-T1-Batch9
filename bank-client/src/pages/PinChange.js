@@ -4,6 +4,8 @@ import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   InputGroup,
   Col,
@@ -14,12 +16,13 @@ import {
   Form,
 } from "react-bootstrap";
 
-function ChequeDeposit({token}){
+function PinChange({token}){
 
-    const [receiveraccountnumber, setReceiverAccountNumber] = useState();
-    const [amount, setAmount] = useState();
-    const [balance, setBalance] = useState();
-    const [flag, setFlag] = useState(true);
+    const [oldPin, setOldPin] = useState();
+    const [newPin, setNewPin] = useState();
+    const [confirmNewPin, setConfirmNewPin] = useState();
+    const [custId, setCustId] = useState();
+
 
     // const getBalById = (event) => {
     //     event.preventDefault();
@@ -48,32 +51,69 @@ function ChequeDeposit({token}){
 
       const handleChequeDeposit = (event) => {
         event.preventDefault();
-        const transactionDetails ={
-            toAccountNumber: parseInt(receiveraccountnumber),
-            fromAccountNumber:null,
-            amount: parseFloat(amount),
+        if(newPin !== confirmNewPin){
+            toast.warning(`Passwords do not match!`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            return;
         }
+        const pinDetails ={
+            customerId: parseInt(custId),
+            oldAccountPin: parseFloat(oldPin),
+            newAccountPin: parseFloat(newPin),
+        }
+        console.log(pinDetails)
         axios
-          .post("http://localhost:30140/api/Transaction/AddTransaction", transactionDetails,
+          .put("http://localhost:30140/api/Customer/ChangePin", pinDetails,
            {headers: { Authorization: `Bearer ${token}` }}
           )
           .then((response) => {
             //(response.data);
             // setCustomerData(response.data)-
-            console.log(receiveraccountnumber);
+            setCustId("")
+            setOldPin("")
+            setNewPin("")
+            setConfirmNewPin("")
+            toast.success(`PIN has been updated!!`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             console.log(response.data);  
-          alert(`INR ${amount} has been deposited`)
 
           })
           .catch((error) => {
+            const errObj = error.response.data;
             console.log(error);
+            toast.error(errObj.errors?errObj[Object.keys(errObj)[0]][0]:"Old PIN is incorrect!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
           });
           
-        //event.preventDefault();
       };
 
     return (
         <div className='rowC'>
+            <ToastContainer />
                 <Snavbar />
                 <div className='colnC'>
                 {/* <div className="rowC">
@@ -83,16 +123,22 @@ function ChequeDeposit({token}){
                 
                     <div className='padd'> 
                         <Container>
-                            <Row className="vh-100 d-flex justify-content-center align-items-center">
-                                <Col md={10} lg={8} xs={12}>
+                            <Row className="vh-40 d-flex justify-content-center align-items-center">
+                                <Col md={8} lg={8} xs={12}>
                                 <div className="border border-3 border-dark"></div>
                                 <Card className="shadow">
                                     <Card.Body>
-                                    <div className="mb-3 mt-4">
-                                        <h2 className="fw-bold mb-2 text-uppercase">CHEQUE DEPOSIT</h2>
-                                        <p className=" mb-5">PLEASE ENTER THE DETAILS BELOW</p>
+                                    <div className="mb-3 mt-3">
+                                        <h2 className="fw-bold mb-3 text-uppercase align-center">Customer PIN CHANGE</h2>
+                                        
                                         <Form>
-                                        <Row className="mb-3">
+                                        <Row className="mb-1">
+                                            <Form.Group as={Col} className="mb-3" controlId="custId">
+                                            <Form.Label>Customer ID</Form.Label>
+                                            <Form.Control type="number" value={custId} onChange={(e)=>{setCustId(e.target.value)}}/>
+                                            </Form.Group>
+                                        </Row>
+                                        <Row className="mb-2">
                                             {/* <Form.Group as={Col} className="mb-3" controlId="sender">
                                             <Form.Label className="text-center">
                                                  A/C No.
@@ -100,23 +146,28 @@ function ChequeDeposit({token}){
                                             <Form.Control type="number" placeholder="Sender A/C No." value={senderaccountnumber} onChange={(e)=>{setSenderAccountNumber(e.target.value)}} />
                                             </Form.Group> */}
 
-                                            <Form.Group as={Col} className="mb-3" controlId="receiver">
-                                            <Form.Label>Receiver A/C No.</Form.Label>
-                                            <Form.Control type="number" placeholder="Receiver A/C No." value={receiveraccountnumber} onChange={(e)=>{setReceiverAccountNumber(e.target.value)}} />
+                                            <Form.Group as={Col} className="mb-3" controlId="oldPin" >
+                                            <Form.Label>Old PIN</Form.Label>
+                                            <Form.Control type="password" maxLength="4" readonly onfocus="this.removeAttribute('readonly');" autocomplete="off" value={oldPin} onChange={(e)=>{setOldPin(e.target.value)}} />
                                             </Form.Group>
                                         </Row>
-                                        <p className=" mb-5"></p>
-                                        <p className=" mb-5">PLEASE ENTER THE AMOUNT BELOW</p>
-                                        <Row className="mb-3">
-                                            <Form.Group as={Col} className="mb-3" controlId="amount">
-                                            <Form.Label>Amount</Form.Label>
-                                            <Form.Control type="number" placeholder="Amount to be sent" value={amount} onChange={(e)=>{setAmount(e.target.value)}}/>
+                                        {/* <p className=" mb-5"></p> */}
+                                        <Row className="mb-2">
+                                            <Form.Group as={Col} className="mb-3" controlId="newPin">
+                                            <Form.Label>New PIN</Form.Label>
+                                            <Form.Control type="password" maxLength="4" readonly onfocus="this.removeAttribute('readonly');" autocomplete="off" value={newPin} onChange={(e)=>{setNewPin(e.target.value)}}/>
+                                            </Form.Group>
+                                        </Row>
+                                        <Row className="mb-2">
+                                            <Form.Group as={Col} className="mb-1" controlId="confirmNewPin">
+                                            <Form.Label>Confirm New PIN</Form.Label>
+                                            <Form.Control type="password" maxLength="4" readonly onfocus="this.removeAttribute('readonly');" autocomplete="off" value={confirmNewPin} onChange={(e)=>{setConfirmNewPin(e.target.value)}}/>
                                             </Form.Group>
                                         </Row>
                                         <br></br>
                                             <div className="d-grid">
                                             <Button variant="dark" type="button" onClick={handleChequeDeposit}>
-                                            Cheque Deposit
+                                            Update PIN
                                             </Button>
                                             </div>
                                         <br></br>
@@ -147,4 +198,4 @@ function ChequeDeposit({token}){
     );
 }
 
-export default ChequeDeposit;
+export default PinChange;

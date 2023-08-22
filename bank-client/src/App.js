@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import InvalidRoute from './components/InvalidRoute';
 import FundTransfer from './pages/FundTransfer';
 import ChequeDeposit from './pages/ChequeDeposit';
+import PinChange from './pages/PinChange';
+import MiniStatement from './pages/MiniStatement';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -45,14 +47,12 @@ function App() {
             <Route path='/transaction-details' element={<TransactionDetails />} />
             <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
+            <Route path='/pin-change' element={<PinChange token={token}/>} />
             <Route path='/balance' element={<BalanceCheck token={token}/>} />
+            <Route path='/mini-statement' element={<MiniStatement token={token}/>} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
-<<<<<<< HEAD
-            <Route path='/transfer' element={<FundTransfer />} />
-            <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
-=======
             <Route path='/transfer' element={<FundTransfer token={token}/>} />
->>>>>>> 5c5cb0f0d2363eb03b1fc3a3815967d1b7a455c3
+            <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}
