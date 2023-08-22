@@ -55,7 +55,7 @@ function MiniStatement({ token, setCustomerData }) {
 
             <div className='colnC'>
                 <div className='rowC'>
-                    <h1 className='titleC'>Mini statement for Account {searchValue}</h1>
+                    <h1 className='titleC'>Mini statement for Account {accNo}</h1>
                     <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
                 </div>
 
