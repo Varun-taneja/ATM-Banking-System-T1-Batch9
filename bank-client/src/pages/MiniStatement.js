@@ -39,6 +39,7 @@ function MiniStatement({ token, setCustomerData }) {
                 console.log(response.data);
                 setStatementData(response.data.reverse());
                 setAccNo(searchValue);
+                setSearchValue("")
                 setFlag(true);
             })
             .catch((error) => {
@@ -59,9 +60,6 @@ function MiniStatement({ token, setCustomerData }) {
                     <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
                 </div>
 
-                {/* <button onClick={getCustById} style={{ margin: "10px" }}>
-                  Search
-                </button> */}
                 <div style={{ marginRight: "0.2em", display: flag ? 'block' : 'none' }}>
                     <MDBTable bordered>
                         <MDBTableHead>
@@ -74,7 +72,7 @@ function MiniStatement({ token, setCustomerData }) {
                         </MDBTableHead>
                         <MDBTableBody>
                             {statementData ? statementData.map((d) => {
-                                if (d.fromAccountNumber == searchValue) {
+                                if (d.fromAccountNumber == accNo) {
                                     return (<tr>
                                         <td scope='row'>{d.transactionTime}</td>
                                         <td>{d.toAccountNumber?`Transfered to Acc No: ${d.toAccountNumber}`:"Cash Withdrawl"}</td>
@@ -82,7 +80,7 @@ function MiniStatement({ token, setCustomerData }) {
                                         <td>{`INR. ${d.fromAccountBalance}`}</td>
                                     </tr>)
                                 }
-                                if (d.toAccountNumber == searchValue) {
+                                if (d.toAccountNumber == accNo) {
                                     return (<tr>
                                         <td scope='row'>{d.transactionTime}</td>
                                         <td>{d.fromAccountNumber?`Received from Acc No: ${d.fromAccountNumber}`:"Cash Deposit"}</td>
