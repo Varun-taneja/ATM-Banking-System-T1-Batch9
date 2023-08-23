@@ -15,6 +15,7 @@ import FundTransfer from './pages/FundTransfer';
 import ChequeDeposit from './pages/ChequeDeposit';
 import PinChange from './pages/PinChange';
 import MiniStatement from './pages/MiniStatement';
+import CurrencyConversion from './pages/CurrencyConversion';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -53,6 +54,7 @@ function App() {
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
             <Route path='/transfer' element={<FundTransfer token={token}/>} />
             <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
+            <Route path='/currency-convert' element={<CurrencyConversion token={token}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

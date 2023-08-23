@@ -61,6 +61,10 @@ const Snavbar = () => {
               <CDBSidebarMenuItem icon="dollar-sign">Cheque Deposit</CDBSidebarMenuItem>
             </NavLink>
 
+            <NavLink exact to="/currency-convert" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="dollar-sign">Currency Exchange</CDBSidebarMenuItem>
+            </NavLink>
+
             <NavLink exact to="/" target="_blank" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="exclamation-circle" onClick={()=>localStorage.removeItem("token")}>LOGOUT</CDBSidebarMenuItem>
             </NavLink>
