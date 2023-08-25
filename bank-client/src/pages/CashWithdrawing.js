@@ -186,8 +186,8 @@ function CashWithdrawing({ token, setCustomerData }) {
 
               <div className="formC" style={{ paddingTop: "1em" }}>
                 <Form>
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridFifty">
+                  <Row className="mb-3" style={{color:"white"}}>
+                    <Form.Group as={Col} controlId="formGridFifty" >
                       <Form.Label>50</Form.Label>
                       <Form.Control type="number" placeholder="Enter No." value={fifty} onChange={(e) => { setFifty(e.target.value) }} />
                     </Form.Group>
@@ -197,7 +197,7 @@ function CashWithdrawing({ token, setCustomerData }) {
                       <Form.Control type="number" placeholder="Enter No." value={hundred} onChange={(e) => { setHundred(e.target.value) }} />
                     </Form.Group>
                   </Row>
-                  <Row className="mb-3">
+                  <Row className="mb-3" style={{color:"white"}}>
                     <Form.Group as={Col} controlId="formGridTwoHundred">
                       <Form.Label>200</Form.Label>
                       <Form.Control type="number" placeholder="Enter No." value={twoHundred} onChange={(e) => { setTwoHundred(e.target.value) }} />

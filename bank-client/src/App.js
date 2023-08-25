@@ -16,6 +16,7 @@ import ChequeDeposit from './pages/ChequeDeposit';
 import PinChange from './pages/PinChange';
 import MiniStatement from './pages/MiniStatement';
 import CurrencyConversion from './pages/CurrencyConversion';
+import ViewAdmins from './pages/ViewAdmins';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -45,12 +46,13 @@ function App() {
             {/* customer routes */}
             <Route path='/create-customer-details' element={<CreateCustomer token={token}/>} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
-            <Route path='/transaction-details' element={<TransactionDetails />} />
+            <Route path='/transaction-details' element={<TransactionDetails token={token}/>} />
             <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
             <Route path='/pin-change' element={<PinChange token={token}/>} />
             <Route path='/balance' element={<BalanceCheck token={token}/>} />
             <Route path='/mini-statement' element={<MiniStatement token={token}/>} />
+            <Route path='/view-admins' element={<ViewAdmins token={token}/>} />
             <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
             <Route path='/transfer' element={<FundTransfer token={token}/>} />
             <Route path='/cheque' element={<ChequeDeposit token={token}/>} />

@@ -65,6 +65,7 @@ function MiniStatement({ token, setCustomerData }) {
                         <MDBTableHead>
                             <tr className='table-dark'>
                                 <th scope="col">Date</th>
+                                <th scope="col">Transaction ID</th>
                                 <th scope="col">Remarks</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Balance</th>
@@ -75,6 +76,7 @@ function MiniStatement({ token, setCustomerData }) {
                                 if (d.fromAccountNumber == accNo) {
                                     return (<tr>
                                         <td scope='row'>{d.transactionTime}</td>
+                                        <td>{d.transactionId}</td>
                                         <td>{d.toAccountNumber?`Transfered to Acc No: ${d.toAccountNumber}`:"Cash Withdrawl"}</td>
                                         <td style={{color:"red"}}>{`INR. ${d.amount}`}</td>
                                         <td>{`INR. ${d.fromAccountBalance}`}</td>
@@ -83,6 +85,7 @@ function MiniStatement({ token, setCustomerData }) {
                                 if (d.toAccountNumber == accNo) {
                                     return (<tr>
                                         <td scope='row'>{d.transactionTime}</td>
+                                        <td>{d.transactionId}</td>
                                         <td>{d.fromAccountNumber?`Received from Acc No: ${d.fromAccountNumber}`:"Cash Deposit"}</td>
                                         <td style={{color:"green"}}>{`INR. ${d.amount}`}</td>
                                         <td>{`INR. ${d.toAccountBalance}`}</td>

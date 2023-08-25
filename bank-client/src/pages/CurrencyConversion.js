@@ -35,7 +35,7 @@ function CurrencyConversion({token}){
             .catch(err => {
                 console.log(err);
             })
-    })
+    },[])
     
 
     const getBalByAccntNo = (event) => {
@@ -74,7 +74,7 @@ function CurrencyConversion({token}){
                     <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getBalByAccntNo}/></div>
                 </div>
                 
-                    <div className='padd'> 
+                    <div className=''> 
                         <Container>
                             <Row className="vh-100 d-flex justify-content-center align-items-center">
                                 <Col md={10} lg={8} xs={12}>
@@ -83,9 +83,8 @@ function CurrencyConversion({token}){
                                     <Card.Body>
                                     <div className="mb-3 mt-4">
                                         <h2 className="fw-bold mb-2 text-uppercase">CONVERT CURRENCY</h2>
-                                        <p className=" mb-5">PLEASE ENTER THE ACCOUNT NUMBER BELOW</p>
+                                        <p className=" mb-2">PLEASE ENTER THE ACCOUNT NUMBER ABOVE</p>
                                         <Form>
-                                        <p className=" mb-5">YOUR ACCOUNT BAL</p>
                                         <Row className="mb-3">
                                             <Form.Group as={Col} className="mb-3" controlId="amount1">
                                             <Form.Label>Balance in INR</Form.Label>
@@ -98,7 +97,7 @@ function CurrencyConversion({token}){
                                             <Form.Control type="number" placeholder="Balance" value={convertedBalance}/>
                                             </Form.Group>
                                         </Row>
-                                        <Row className="mb-3">
+                                        <Row className="mb-1">
                                             <Form.Group as={Col} className="mb-3" controlId="amount2">
                                             <Form.Label>Set your currency</Form.Label>
                                             <Form.Control type="text" placeholder="XXX" value={curr} maxLength={3} onChange={e => setCurr(e.target.value)}/>
@@ -106,7 +105,7 @@ function CurrencyConversion({token}){
                                         </Row>
                                         <br></br>
                                         <div className="d-grid">
-                                            <select value={curr} onChange={e => setCurr(e.target.value)}>
+                                            <select className="mb-3" value={curr} onChange={e => setCurr(e.target.value)}>
                                                 <option value="INR">INR</option>
                                                 <option value="USD">USD</option>
                                                 <option value="GBP">GBP</option>
@@ -114,7 +113,7 @@ function CurrencyConversion({token}){
                                                 <option value="BTC">BTC</option>
                                             </select>
                                             <Button variant="dark" type="button" onClick={getConvertedCurrency}>
-                                            Check Balanace
+                                            Convert Balance
                                             </Button>
                                         </div>
                                         <br></br>

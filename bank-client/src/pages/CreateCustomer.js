@@ -8,6 +8,9 @@ import Row from 'react-bootstrap/Row';
 // import Nform from "../components/Nform";
 // import Searchbar from '../components/Searchbar';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function CreateCustomer({token}){
     const [name, setName] = useState("");
@@ -43,6 +46,24 @@ function CreateCustomer({token}){
             const res = await axios.post('http://localhost:30140/api/Customer/AddCustomer', data,{ 
                 headers: {'Content-Type': 'application/json',  Authorization: `Bearer ${token}`}})
             console.log(res)
+            toast.success(`Customer has been created!!`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            setCustId("");
+            setName("")
+            setEmail("")
+            setPincode("")
+            setAddress("")
+            setAccountNumber("")
+            setContact("")
+
             
         } catch (err) {
             console.log(err);
@@ -54,6 +75,7 @@ function CreateCustomer({token}){
     return (
         <div className='rowC'>
             <Snavbar />
+            <ToastContainer/>
             <div className='colnC'>
             <h1 className='titleC'>Create Customer</h1>
                 <div className="formC">

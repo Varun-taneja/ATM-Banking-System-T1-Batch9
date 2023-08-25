@@ -7,12 +7,11 @@ import axios from "axios";
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 
-function ViewCustomer({ token, setCustomerData }) {
+
+function ViewAdmins({ token, setCustomerData }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState();
@@ -23,13 +22,54 @@ function ViewCustomer({ token, setCustomerData }) {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [adminData, setAdminData] = useState();
   const [flag,setFlag]= useState(false);
 
   const navigate = useNavigate();
 
-  // useEffect(()=>{
+  useEffect(()=>{
+    axios
+    .get("http://localhost:30140/api/auth/GetAdmins/", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      //(response.data);
+      setAdminData(response.data);
+      setFlag(true);
+      console.log(searchValue);
+      console.log(response.data);
+      
 
-  // },[])
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  },[])
+
+  const toggleAdmin = (event) => {
+    event.preventDefault();
+    console.log(event.target.id)
+    console.log(token)
+    axios
+      .put("http://localhost:30140/api/auth/ToggleAdmin/" + event.target.id,{}, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        //(response.data);
+        setAdminData((adminData)=>adminData.map((admin)=>{
+          if(admin.id == event.target.id){
+            admin.enable = response.data.enable
+          }
+          return admin;
+        }))
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    //event.preventDefault();
+  };
 
   const getCustById = (event) => {
     event.preventDefault();
@@ -61,37 +101,6 @@ function ViewCustomer({ token, setCustomerData }) {
     //event.preventDefault();
   };
 
-  const delCustById = (event) => {
-    event.preventDefault();
-    axios
-      .delete("http://localhost:30140/api/Customer/DeleteCustomer/" + searchValue, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        //(response.data);
-        toast.success(`Customer has been deleted!!`, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          });
-        setCustomerData(response.data);
-        setFlag(false);
-        console.log(searchValue);
-        console.log(response.data);
-        setSearchValue("")
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    //event.preventDefault();
-  };
-
   const editCustomer = () => {
 
     navigate('/edit-customer-details')
@@ -100,10 +109,10 @@ function ViewCustomer({ token, setCustomerData }) {
   return (
     <div className='rowC'>
       <Snavbar />
-      <ToastContainer />
+
       <div className='colnC'>
         <div className='rowC'>
-          <h1 className='titleC'>View Customer Details</h1>
+          <h1 className='titleC'>View Admin Details</h1>
           <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
         </div>
         
@@ -114,30 +123,24 @@ function ViewCustomer({ token, setCustomerData }) {
           <MDBTable bordered>
             <MDBTableHead>
               <tr className='table-dark'>
+                <th scope="col">Employee ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Customer ID</th>
-                <th scope="col">Account Number</th>
-                <th scope="col">Address</th>
-                <th scope="col">Pincode</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Status</th>
+                <th scope="col">Change Status</th>
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-            <tr>
-              <td scope='row'>{name}</td>
-              <td>{email}</td>
-              <td>{contact}</td>
-              <td>{custId}</td>
-              <td>{accountNumber}</td>
-              <td>{address}</td>
-              <td>{pincode}</td>
-              <td><Button onClick={editCustomer}>Edit</Button></td>
-              <td><Button onClick={delCustById} variant="danger">Delete</Button></td>
-
-              </tr>
+            {adminData?adminData.map((admin)=>(
+                <tr>
+                    <td scope='row'>{admin.id}</td>
+                    <td>{admin.email}</td>
+                    <td>{admin.name}</td>
+                    <td style={{color:`${admin.enable?"green":"red"}`}}>{admin.enable?"Enabled":"Disabled"}</td>
+                    <td><Button onClick={toggleAdmin} id={admin.id}>{admin.enable?"Disable":"Enable"}</Button></td>
+                </tr>
+            )):''}
+            
             </MDBTableBody>
           </MDBTable>
         </div>
@@ -149,4 +152,4 @@ function ViewCustomer({ token, setCustomerData }) {
   )
 }
 
-export default ViewCustomer;
+export default ViewAdmins;

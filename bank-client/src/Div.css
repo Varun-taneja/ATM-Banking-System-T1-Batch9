@@ -2,11 +2,11 @@
 
 .formC{position: inherit; padding: 4em;}
 
-.colnC{display:flex; flex-direction:column;  padding-left:5%; width:100%;}
+.colnC{display:flex; flex-direction:column;  padding-left:2%; width:100%;}
 
 .searchC{margin-left: auto; 
     margin-right: 0;
-    padding-bottom: 5em;
+    padding-bottom: 2em;
     }
 
 .padd{

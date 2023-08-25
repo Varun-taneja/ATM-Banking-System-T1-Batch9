@@ -46,9 +46,9 @@ const Snavbar = () => {
             <NavLink exact to="/pin-change" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Pin Change</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/customer-card-details" activeClassName="activeClicked">
+            {/* <NavLink exact to="/customer-card-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="credit-card" iconType="solid">Customer Card Details</CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink> */}
             <NavLink exact to="/transaction-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="chart-line">Customer Transaction Details</CDBSidebarMenuItem>
             </NavLink>
@@ -64,7 +64,9 @@ const Snavbar = () => {
             <NavLink exact to="/currency-convert" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="dollar-sign">Currency Exchange</CDBSidebarMenuItem>
             </NavLink>
-
+            <NavLink exact to="/view-admins" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Admin Status</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/" target="_blank" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="exclamation-circle" onClick={()=>localStorage.removeItem("token")}>LOGOUT</CDBSidebarMenuItem>
             </NavLink>
