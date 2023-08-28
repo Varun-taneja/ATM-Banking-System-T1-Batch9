@@ -9,6 +9,9 @@ import Nform from '../components/Nform';
 import Searchbar from '../components/Searchbar';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AddCustomerDetails({customerData}) {
     const [name, setName] = useState(customerData.customerName);
     const [email, setEmail] = useState(customerData.email);
@@ -25,6 +28,51 @@ function AddCustomerDetails({customerData}) {
 
     const sendPutRequest = async (e) => {
        e.preventDefault();
+
+       let msg ="";
+       
+       if(pincode === "" || pincode.length !== 6 || !(/^\d+$/.test(pincode))){
+           msg = "Pincode of 8 digits required"
+       }
+
+       if(address === ""){
+           msg = "Address is Required"
+       }
+       if(accountNumber === "" || accountNumber.length !== 8 || !(/^\d+$/.test(accountNumber))){
+           msg = "Account Number of 8 digits required"
+       }
+
+       if(custId === "" || custId.length !== 8 || !(/^\d+$/.test(custId))){
+           msg = "Customer ID of 8 digits required"
+       }
+
+       if(email ==="" || !(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email))){
+           msg = "Valid Email is required"
+       }
+
+       if(contact === "" || contact.length !== 10 || !(/^\d+$/.test(contact))){
+           msg = "Contact of 10 digits required"
+       }
+       if(!(/^[a-z]+$/i.test(name))){
+           msg = "Name should only contain alphabets";
+       }
+        if(name === ""){
+           msg = "Name Field is Required";
+       }
+
+       if(msg !== ""){
+           return toast.warning(msg, {
+               position: "top-center",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "dark",
+               });
+       }
+
         try {
             const updatedCustomer = {
                 email,
@@ -73,6 +121,7 @@ function AddCustomerDetails({customerData}) {
     return (
         <div className='rowC'>
             <Snavbar />
+            <ToastContainer />
             <div className='colnC'>
                 <h1 className='titleC'>Edit Customer Details</h1>
                 <div className="formC">
