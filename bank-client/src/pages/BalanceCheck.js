@@ -4,6 +4,8 @@ import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BalanceCheck({ token, isToggled, setIsToggled }) {
 
@@ -26,6 +28,16 @@ function BalanceCheck({ token, isToggled, setIsToggled }) {
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
       });
 
     event.preventDefault();
@@ -33,6 +45,7 @@ function BalanceCheck({ token, isToggled, setIsToggled }) {
   return (
     <div className='rowC'>
       <Snavbar isToggled={isToggled} setIsToggled={setIsToggled} />
+      <ToastContainer />
       <div className='colnC'>
         <div className="rowC">
           <h1 className="titleC">Customer Balance Details</h1>

@@ -70,7 +70,7 @@ function CashWithdrawing({ token, setCustomerData, isToggled, setIsToggled }) {
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message, {
+        toast.error(error.response.data, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

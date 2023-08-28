@@ -8,9 +8,9 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function TransactionDetails({ token, setCustomerData, isToggled, setIsToggled }) {
@@ -57,12 +57,22 @@ function TransactionDetails({ token, setCustomerData, isToggled, setIsToggled })
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
       });
 
     //event.preventDefault();
   };
 
-  const getCustById = (event) => {
+  const getTransactions = (event) => {
     event.preventDefault();
     
     axios
@@ -78,6 +88,16 @@ function TransactionDetails({ token, setCustomerData, isToggled, setIsToggled })
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.response.data, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
       });
 
     //event.preventDefault();
@@ -88,12 +108,12 @@ function TransactionDetails({ token, setCustomerData, isToggled, setIsToggled })
     <div className='rowC'>
 
       <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
-      
+      <ToastContainer />
       <div className='colnC'>
         <div className='rowC'>
 
           <h1 className='titleC' style={{paddingLeft: "0.2em"}}>Transaction History for Account {accNo}</h1>
-          <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getCustById} /></div>
+          <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getTransactions} /></div>
         </div>
 
 

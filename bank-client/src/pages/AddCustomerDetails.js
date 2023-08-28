@@ -91,6 +91,16 @@ function AddCustomerDetails({customerData,isToggled, setIsToggled, token}) {
         } catch (err) {
             // Handle Error Here
             console.error(err);
+            toast.error(err.response.data, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
     };
 
