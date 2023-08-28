@@ -17,6 +17,7 @@ import PinChange from './pages/PinChange';
 import MiniStatement from './pages/MiniStatement';
 import CurrencyConversion from './pages/CurrencyConversion';
 import ViewAdmins from './pages/ViewAdmins';
+import LandingPage from './pages/LandingPage';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
@@ -44,6 +45,7 @@ function App() {
             <Route path='/' element={<Home />}></Route>
             {/* <Route path='/home' element={<Home />}></Route> */}
             {/* customer routes */}
+            <Route path='/landing' element={<LandingPage />} />
             <Route path='/create-customer-details' element={<CreateCustomer token={token}/>} />
             <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
             <Route path='/transaction-details' element={<TransactionDetails token={token}/>} />

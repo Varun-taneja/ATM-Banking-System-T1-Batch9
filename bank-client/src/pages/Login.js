@@ -133,7 +133,7 @@ function Login({setToken}) {
                             <label for="chk" className="log">LOGIN</label>
                             <div className="user-box">
                                 <input type="text" title="Enter Email" ref={loginEmailRef}  required />
-                                <label>Email</label>
+                                <label>EMAIL</label>
                             </div>
                             <div className="user-box">
                                 <input type="password" title="Enter password" ref={loginPasswordRef}  required />
