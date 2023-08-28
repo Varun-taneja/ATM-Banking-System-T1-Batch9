@@ -76,7 +76,7 @@ function ViewCheques({ token, setCustomerData, isToggled, setIsToggled }) {
                                     <td scope='row'>{d.chequeId}</td>
                                     <td>{new Date(d.issueTime).toLocaleString()}</td>
                                     <td>{d.amount}</td>
-                                    <td>{d.status?"Success":"Pending"}</td>
+                                    <td style={{color:d.status?"green":"red"}}>{d.status?"Success":"Pending"}</td>
                                     
                                     
                                 </tr>)

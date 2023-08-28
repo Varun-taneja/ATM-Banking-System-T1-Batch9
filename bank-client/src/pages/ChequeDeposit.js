@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import {
   InputGroup,
@@ -61,8 +63,17 @@ function ChequeDeposit({token, isToggled, setIsToggled}){
             //(response.data);
             // setCustomerData(response.data)-
             console.log(receiveraccountnumber);
-            console.log(response.data);  
-          alert(`INR ${amount} has been deposited`)
+            console.log(response.data); 
+            toast.success(`INR ${amount} has been deposited`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                }); 
 
           })
           .catch((error) => {
@@ -74,7 +85,8 @@ function ChequeDeposit({token, isToggled, setIsToggled}){
 
     return (
         <div className='rowC'>
-                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
+                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>.
+                <ToastContainer />
                 <div className='colnC'>
                 {/* <div className="rowC">
                     <h1 className="titleC">Fund Transfer</h1>

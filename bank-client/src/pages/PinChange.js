@@ -64,6 +64,20 @@ function PinChange({token, isToggled, setIsToggled}){
                 });
             return;
         }
+        if(newPin === oldPin){
+            toast.warning(`New PIN cannot be same as Old PIN`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            return;
+        }
+
         const pinDetails ={
             customerId: parseInt(custId),
             oldAccountPin: parseFloat(oldPin),
