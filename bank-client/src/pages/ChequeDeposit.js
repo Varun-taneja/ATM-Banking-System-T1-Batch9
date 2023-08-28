@@ -14,7 +14,7 @@ import {
   Form,
 } from "react-bootstrap";
 
-function ChequeDeposit({token}){
+function ChequeDeposit({token, isToggled, setIsToggled}){
 
     const [receiveraccountnumber, setReceiverAccountNumber] = useState();
     const [amount, setAmount] = useState();
@@ -74,7 +74,7 @@ function ChequeDeposit({token}){
 
     return (
         <div className='rowC'>
-                <Snavbar />
+                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
                 <div className='colnC'>
                 {/* <div className="rowC">
                     <h1 className="titleC">Fund Transfer</h1>

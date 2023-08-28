@@ -13,7 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
-function TransactionDetails({ token, setCustomerData }) {
+function TransactionDetails({ token, setCustomerData, isToggled, setIsToggled }) {
   //   const [name, setName] = useState("");
   //   const [email, setEmail] = useState("");
   //   const [contact, setContact] = useState();
@@ -87,7 +87,7 @@ function TransactionDetails({ token, setCustomerData }) {
   return (
     <div className='rowC'>
 
-      <Snavbar />
+      <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
       
       <div className='colnC'>
         <div className='rowC'>

@@ -17,7 +17,7 @@ import {
 } from "react-bootstrap";
 
  
-function CurrencyConversion({token}){
+function CurrencyConversion({token, isToggled, setIsToggled}){
     const [searchValue, setSearchValue] = useState();
     const [accountBalance, setAccountBalance] = useState();
     const [accountNumber, setAccountNumber] = useState();
@@ -67,7 +67,7 @@ function CurrencyConversion({token}){
     return (
         <div className='rowC'>
               <ToastContainer/>
-                <Snavbar />
+                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
                 <div className='colnC'>
                 <div className="rowC">
                     {/* <h1 className="titleC">Convert your Currency</h1> */}

@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function CreateCustomer({token}){
+function CreateCustomer({token, isToggled, setIsToggled}){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
@@ -118,7 +118,7 @@ function CreateCustomer({token}){
 
     return (
         <div className='rowC'>
-            <Snavbar />
+            <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
             <ToastContainer/>
             <div className='colnC'>
             <h1 className='titleC'>Create Customer</h1>

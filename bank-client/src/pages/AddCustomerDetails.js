@@ -12,7 +12,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function AddCustomerDetails({customerData}) {
+function AddCustomerDetails({customerData,isToggled, setIsToggled, token}) {
     const [name, setName] = useState(customerData.customerName);
     const [email, setEmail] = useState(customerData.email);
     const [contact, setContact] = useState(customerData.contact);
@@ -120,7 +120,7 @@ function AddCustomerDetails({customerData}) {
 
     return (
         <div className='rowC'>
-            <Snavbar />
+            <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
             <ToastContainer />
             <div className='colnC'>
                 <h1 className='titleC'>Edit Customer Details</h1>

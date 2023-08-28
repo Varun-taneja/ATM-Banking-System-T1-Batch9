@@ -16,7 +16,7 @@ import {
   Form,
 } from "react-bootstrap";
 
-function FundTransfer({token}){
+function FundTransfer({token, isToggled, setIsToggled}){
     const [senderaccountnumber, setSenderAccountNumber] = useState();
     const [receiveraccountnumber, setReceiverAccountNumber] = useState();
     const [amount, setAmount] = useState();
@@ -108,7 +108,7 @@ function FundTransfer({token}){
     return (
         <div className='rowC'>
               <ToastContainer/>
-                <Snavbar />
+                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
                 <div className='colnC'>
                 {/* <div className="rowC">
                     <h1 className="titleC">Fund Transfer</h1>

@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-function ViewCustomer({ token, setCustomerData }) {
+function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState();
@@ -99,7 +99,7 @@ function ViewCustomer({ token, setCustomerData }) {
 
   return (
     <div className='rowC'>
-      <Snavbar />
+      <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
       <ToastContainer />
       <div className='colnC'>
         <div className='rowC'>

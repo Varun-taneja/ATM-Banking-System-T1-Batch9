@@ -3,58 +3,61 @@ import Snavbar from "../components/Snavbar";
 import "../Div.css"
 import SearchBar from "../components/Searchbar";
 import axios from "axios";
-function BalanceCheck({token}){
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
-    const [accountNumber, setAccountNumber] = useState()
-    const [accountBalance, setAccountBalance ] = useState()
-    const [searchValue, setSearchValue] = useState()
+function BalanceCheck({ token, isToggled, setIsToggled }) {
 
- 
-      const getBalByAccntNo = (event) => {
-        axios
-          .get("http://localhost:30140/api/Balance/GetBalance/" + searchValue, {
-            headers: { Authorization: `Bearer ${token}` }
-          })
-          .then((response) => {
-            //(response.data);
-            console.log(response.data);
-            setAccountNumber(response.data.accountNumber);
-            setAccountBalance(response.data.accountBalance);
+  const [accountNumber, setAccountNumber] = useState()
+  const [accountBalance, setAccountBalance] = useState()
+  const [searchValue, setSearchValue] = useState()
+  const [flag, setFlag] = useState(false)
 
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    
-        event.preventDefault();
-      };
-    return (
-        <div className='rowC'>
-            <Snavbar />
-            <div className='colnC'>
-              <div className="rowC">
-                <h1 className="titleC">Customer Balance Details</h1>
-                <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getBalByAccntNo}/></div>
-              </div>
-              
-                <div className='padd'> 
-                  <table className="table table-bordered">
-                      <tr>
-                      <th>Account Number</th>
-                      <th>Account Balance</th>
-                      </tr>
-                      {/* {data.map((d) => ( */}
-                      <tr>
-                          <td>{accountNumber}</td>
-                          <td>{accountBalance}</td>
-                          
-                      </tr>
-                      {/* ))} */}
-                  </table>
-                </div>
-            </div>
+  const getBalByAccntNo = (event) => {
+    axios
+      .get("http://localhost:30140/api/Balance/GetBalance/" + searchValue, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        //(response.data);
+        console.log(response.data);
+        setAccountNumber(response.data.accountNumber);
+        setAccountBalance(response.data.accountBalance);
+        setFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    event.preventDefault();
+  };
+  return (
+    <div className='rowC'>
+      <Snavbar isToggled={isToggled} setIsToggled={setIsToggled} />
+      <div className='colnC'>
+        <div className="rowC">
+          <h1 className="titleC">Customer Balance Details</h1>
+          <div className='searchC'><SearchBar searchValue={searchValue} setSearchValue={setSearchValue} submitSearch={getBalByAccntNo} /></div>
         </div>
-    )
+        <div style={{ marginRight: "0.2em", display: flag ? 'block' : 'none' }}>
+          <MDBTable bordered>
+            <MDBTableHead>
+              <tr className='table-dark'>
+                <th scope="col">Account number</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </MDBTableHead>
+            <MDBTableBody>
+              <tr>
+                <td scope='row'>{accountNumber}</td>
+                <td>{accountBalance}</td>
+              </tr>
+            </MDBTableBody>
+          </MDBTable>
+        </div>
+       
+      </div>
+    </div>
+  )
 }
 
 export default BalanceCheck;

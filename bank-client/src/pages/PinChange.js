@@ -16,7 +16,7 @@ import {
   Form,
 } from "react-bootstrap";
 
-function PinChange({token}){
+function PinChange({token, isToggled, setIsToggled}){
 
     const [oldPin, setOldPin] = useState();
     const [newPin, setNewPin] = useState();
@@ -114,7 +114,7 @@ function PinChange({token}){
     return (
         <div className='rowC'>
             <ToastContainer />
-                <Snavbar />
+                <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
                 <div className='colnC'>
                 {/* <div className="rowC">
                     <h1 className="titleC">Fund Transfer</h1>

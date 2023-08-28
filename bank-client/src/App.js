@@ -18,10 +18,13 @@ import MiniStatement from './pages/MiniStatement';
 import CurrencyConversion from './pages/CurrencyConversion';
 import ViewAdmins from './pages/ViewAdmins';
 import LandingPage from './pages/LandingPage';
+import ViewCheques from './pages/ViewCheques';
 function App() {
   const [token, setToken] = useState();
   const [flag, setFlag] = useState();
   const [customerData, setCustomerData] = useState();
+  const [isToggled, setIsToggled] = useState(false)
+
 
   useEffect(() => {
     const authToken = localStorage.getItem("token");
@@ -42,23 +45,25 @@ function App() {
 
         <Routes>
             {/* <Route path='/' element={<Home />}></Route> */}
-            <Route path='/' element={<Home />}></Route>
+            <Route path='/' element={<Home isToggled={isToggled} setIsToggled={setIsToggled}/>}></Route>
             {/* <Route path='/home' element={<Home />}></Route> */}
             {/* customer routes */}
-            <Route path='/landing' element={<LandingPage />} />
-            <Route path='/create-customer-details' element={<CreateCustomer token={token}/>} />
-            <Route path='/edit-customer-details' element={<AddCustomerDetails customerData={customerData}/>} />
-            <Route path='/transaction-details' element={<TransactionDetails token={token}/>} />
-            <Route path='/cash-withdrawing' element={<CashWithdrawing token={token}/>} />
+            {/* <Route path='/landing' element={<LandingPage />} /> */}
+            <Route path='/create-customer-details' element={<CreateCustomer token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/edit-customer-details' element={<AddCustomerDetails token={token} customerData={customerData} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/view-cheques' element={<ViewCheques token ={token} customerData={customerData} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+
+            <Route path='/transaction-details' element={<TransactionDetails token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/cash-withdrawing' element={<CashWithdrawing token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
             <Route path='/customer-card-details' element={<CustomerCardDetails />} />
-            <Route path='/pin-change' element={<PinChange token={token}/>} />
-            <Route path='/balance' element={<BalanceCheck token={token}/>} />
-            <Route path='/mini-statement' element={<MiniStatement token={token}/>} />
-            <Route path='/view-admins' element={<ViewAdmins token={token}/>} />
-            <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData}/>} />
-            <Route path='/transfer' element={<FundTransfer token={token}/>} />
-            <Route path='/cheque' element={<ChequeDeposit token={token}/>} />
-            <Route path='/currency-convert' element={<CurrencyConversion token={token}/>} />
+            <Route path='/pin-change' element={<PinChange token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/balance' element={<BalanceCheck token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/mini-statement' element={<MiniStatement token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/view-admins' element={<ViewAdmins token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/view-customer' element={<ViewCustomer token={token} setCustomerData={setCustomerData} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/transfer' element={<FundTransfer token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/cheque' element={<ChequeDeposit token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
+            <Route path='/currency-convert' element={<CurrencyConversion token={token} isToggled={isToggled} setIsToggled={setIsToggled}/>} />
             {/* admin routes */}
             {/* <Route path='/register-admin' element={<Register />} /> */}
             {/* <Route path='/login-admin' element={<Login />} /> */}

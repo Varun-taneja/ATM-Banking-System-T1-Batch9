@@ -13,7 +13,7 @@ import Row from 'react-bootstrap/Row';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function CashWithdrawing({ token, setCustomerData }) {
+function CashWithdrawing({ token, setCustomerData, isToggled, setIsToggled }) {
 
 
   // const balanceChange = value => {
@@ -147,7 +147,7 @@ function CashWithdrawing({ token, setCustomerData }) {
     <div className='rowC'>
       <ToastContainer />
 
-      <Snavbar />
+      <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
       <div className='colnC'>
         <div className="rowC">
           <h1 className="titleC">Cash Withrawal</h1>

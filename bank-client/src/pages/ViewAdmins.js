@@ -11,7 +11,7 @@ import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 
 
-function ViewAdmins({ token, setCustomerData }) {
+function ViewAdmins({ token, setCustomerData, isToggled, setIsToggled }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState();
@@ -108,7 +108,7 @@ function ViewAdmins({ token, setCustomerData }) {
 
   return (
     <div className='rowC'>
-      <Snavbar />
+      <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
 
       <div className='colnC'>
         <div className='rowC'>

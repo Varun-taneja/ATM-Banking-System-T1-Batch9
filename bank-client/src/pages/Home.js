@@ -3,13 +3,13 @@ import Snavbar from '../components/Snavbar'
 import { Link } from 'react-router-dom';
 import Carousel from '../components/Carousel';
 import HeroSection from '../components/HeroSection';
-function App() {
+function App({isToggled, setIsToggled}) {
   return (
     
     // <Snavbar/>
     <div className='rowC'>
-            <Snavbar />
-            <div className='colnC'>
+            <Snavbar isToggled={isToggled} setIsToggled={setIsToggled}/>
+            <div className='colnC' style ={{paddingLeft: "0%"}}>
               <video src='../videos/video-2.mp4' autoPlay loop muted />  
             </div>
     </div>
