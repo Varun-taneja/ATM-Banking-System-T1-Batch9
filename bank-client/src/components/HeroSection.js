@@ -8,7 +8,7 @@ function HeroSection() {
     <div className='hero-container'>
       <video src='../videos/video-1.mp4' autoPlay loop muted />
       <h1>BANK | U & ME</h1>
-      <p>We Serve All Your Banking Needs</p>
+      <p style={{marginLeft:"3%"}}>We Serve All Your Banking Needs</p>
     </div>
   );
 }

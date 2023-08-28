@@ -69,8 +69,25 @@ function App() {
       </BrowserRouter>
 
           :
-          
-          <Login setToken={setToken}/>
+          <BrowserRouter>
+
+        <Routes>
+            {/* <Route path='/' element={<Home />}></Route> */}
+            <Route path='/sign-up' element={<Login token={token} setToken={setToken}/>}></Route>
+            {/* <Route path='/home' element={<Home />}></Route> */}
+            {/* customer routes */}
+            <Route path='/' element={<LandingPage />} />
+            
+            
+            {/* admin routes */}
+            {/* <Route path='/register-admin' element={<Register />} /> */}
+            {/* <Route path='/login-admin' element={<Login />} /> */}
+
+            {/* Handling invalid routes */}
+            <Route path='*' element={<InvalidRoute />} />
+          </Routes>
+      </BrowserRouter>
+          // <Login setToken={setToken}/>
 
         }
 

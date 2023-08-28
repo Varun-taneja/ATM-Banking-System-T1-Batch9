@@ -15,6 +15,8 @@ function Login({setToken}) {
     const loginPasswordRef = useRef()
     const [loading, setLoading] = useState(false)
     
+    const navigate = useNavigate();
+
     async function handleSignUp(e) {
         e.preventDefault()
 
@@ -71,6 +73,7 @@ function Login({setToken}) {
             if(res.data.token){
                 console.log(setToken)
                 setToken(res.data.token)
+                navigate('/');
             }else{
                 toast.error('Invalid Credentials!', {
                     position: "top-center",

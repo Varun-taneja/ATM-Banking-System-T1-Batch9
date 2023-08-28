@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { NavLink, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../Navbar.css';
 
 function Navbar() {
@@ -9,6 +10,8 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const navigate = useNavigate();
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -63,7 +66,7 @@ function Navbar() {
             <li>
            
               <NavLink
-                to='/login'
+                to='/sign-up'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
@@ -71,7 +74,7 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>REGISTER / LOGIN</Button>}
+          {button && <Button buttonStyle='btn--outline' type="button" >REGISTER / LOGIN</Button>}
         </div>
       </nav>
     </>
