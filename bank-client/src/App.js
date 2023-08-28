@@ -37,7 +37,7 @@ function App() {
   return (
     <React.Fragment>
   
-        {token ?
+        {!token ?
       <BrowserRouter>
 
         <Routes>

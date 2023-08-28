@@ -100,6 +100,7 @@ function Login({setToken}) {
     return (
         <div>
             {/* <h3 style={{color:'black'}}>ATM Banking System</h3> */}
+            <video src='../videos/video-1.mp4' autoPlay loop muted />
             <ToastContainer />
             <div className="Authentication">
                 <div className="main">
