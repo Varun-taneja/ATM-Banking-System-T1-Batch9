@@ -124,7 +124,7 @@ function ChequeDeposit({token, isToggled, setIsToggled}){
 
                                             <Form.Group as={Col} className="mb-3" controlId="receiver">
                                             <Form.Label>Receiver A/C No.</Form.Label>
-                                            <Form.Control type="number" placeholder="Receiver A/C No." value={receiveraccountnumber} onChange={(e)=>{setReceiverAccountNumber(e.target.value)}} />
+                                            <Form.Control type="number" maxLength="8" placeholder="Receiver A/C No." value={receiveraccountnumber} onChange={(e)=>{setReceiverAccountNumber(e.target.value)}} />
                                             </Form.Group>
                                         </Row>
                                         <p className=" mb-5"></p>

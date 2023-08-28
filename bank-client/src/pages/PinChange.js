@@ -149,7 +149,7 @@ function PinChange({token, isToggled, setIsToggled}){
                                         <Row className="mb-1">
                                             <Form.Group as={Col} className="mb-3" controlId="custId">
                                             <Form.Label>Customer ID</Form.Label>
-                                            <Form.Control type="number" value={custId} onChange={(e)=>{setCustId(e.target.value)}}/>
+                                            <Form.Control type="number" value={custId} maxLength="8" onChange={(e)=>{setCustId(e.target.value)}}/>
                                             </Form.Group>
                                         </Row>
                                         <Row className="mb-2">

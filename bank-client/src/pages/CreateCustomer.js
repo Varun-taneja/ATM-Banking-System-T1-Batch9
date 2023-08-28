@@ -172,7 +172,7 @@ function CreateCustomer({token, isToggled, setIsToggled}){
                             
                         <Form.Group className="mb-3" controlId="formGridAddress1">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="Full Address" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
+                            <Form.Control placeholder="Full Address" as="textarea" rows="3" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
                         </Form.Group>
 
                         <Row className="mb-3">
