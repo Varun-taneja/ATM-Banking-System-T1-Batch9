@@ -16,10 +16,10 @@ function AddCustomerDetails({ customerData, isToggled, setIsToggled, token }) {
     const [name, setName] = useState(customerData.customerName);
     const [email, setEmail] = useState(customerData.email);
     const [contact, setContact] = useState(customerData.contact);
-    const [custId, setCustId] = useState(customerData.customerID);
-    const [accountNumber, setAccountNumber] = useState(customerData.accountNumber);
+    const [custId, setCustId] = useState(customerData.customerId.toString());
+    const [accountNumber, setAccountNumber] = useState(customerData.accountNumber.toString());
     const [address, setAddress] = useState(customerData.address);
-    const [pincode, setPincode] = useState(customerData.pincode);
+    const [pincode, setPincode] = useState(customerData.pincode.toString());
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function AddCustomerDetails({ customerData, isToggled, setIsToggled, token }) {
 
     const sendPutRequest = async (e) => {
         e.preventDefault();
-
+        console.log(customerData)
         let msg = "";
 
         if (pincode === "" || pincode.length !== 6 || !(/^\d+$/.test(pincode))) {
@@ -163,9 +163,9 @@ function AddCustomerDetails({ customerData, isToggled, setIsToggled, token }) {
                         </Row>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="formGridCustomerId">
+                            <Form.Group disabled={true} as={Col} controlId="formGridCustomerId">
                                 <Form.Label>Customer ID</Form.Label>
-                                <Form.Control type="" placeholder="xxxxxxxxxx" value={custId} onChange={(e) => { setCustId(e.target.value) }} />
+                                <Form.Control disabled={true} type="" placeholder="xxxxxxxxxx" value={custId} onChange={(e) => { setCustId(e.target.value) }} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridAccountNo">

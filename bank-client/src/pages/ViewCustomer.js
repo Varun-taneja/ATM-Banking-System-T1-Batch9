@@ -24,12 +24,38 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
   const [city, setCity] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [flag,setFlag]= useState(false);
+  const [customerList, setCustomerList] = useState()
 
   const navigate = useNavigate();
 
-  // useEffect(()=>{
+  useEffect(()=>{
+    axios
+    .get("http://localhost:30140/api/Customer/GetAllCustomers/", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      //(response.data);
+      setCustomerList([...response.data]);
+      setFlag(true);
+      console.log(searchValue);
+      console.log(response.data);
+      
 
-  // },[])
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.response.data, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    });
+  },[])
 
   const getCustById = (event) => {
     event.preventDefault();
@@ -39,19 +65,12 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
       })
       .then((response) => {
         //(response.data);
+        setCustomerList([{...response.data, customerId: response.data.customerID}])
         setCustomerData(response.data);
         setFlag(true);
         console.log(searchValue);
         console.log(response.data);
-        setName(response.data.customerName);
-        setEmail(response.data.email);
-        setContact(response.data.contact);
-        setCustId(response.data.customerID);
-        setAccountNumber(response.data.accountNumber);
-        setAddress(response.data.address);
-        setPincode(response.data.pincode);
-        setState(response.data.state);
-        setCity(response.data.city);
+      
 
       })
       .catch((error) => {
@@ -74,7 +93,7 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
   const delCustById = (event) => {
     event.preventDefault();
     axios
-      .delete("http://localhost:30140/api/Customer/DeleteCustomer/" + searchValue, {
+      .delete("http://localhost:30140/api/Customer/DeleteCustomer/" + event.target.id, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -89,7 +108,11 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
           progress: undefined,
           theme: "dark",
           });
-        setCustomerData(response.data);
+
+        setCustomerList((customerList)=>customerList.filter((d)=>{
+          return d.customerId !=event.target.id;
+        }));
+        // setCustomerData(response.data);
         setFlag(false);
         console.log(searchValue);
         console.log(response.data);
@@ -112,8 +135,10 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
     //event.preventDefault();
   };
 
-  const editCustomer = () => {
-
+  const editCustomer = (event) => {
+    console.log(event.target.id)
+    console.log(customerList.filter((d)=> (d.customerId == event.target.id)))
+    setCustomerData(customerList.filter(d=> d.customerId == event.target.id)[0])
     navigate('/edit-customer-details')
   }
 
@@ -130,7 +155,7 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
         {/* <button onClick={getCustById} style={{ margin: "10px" }}>
                   Search
                 </button> */}
-        <div style={{marginRight:"0.2em",display: flag?'block':'none'}}>
+        <div style={{marginRight:"0.2em",display: flag?'block':'none', maxWidth:"50%"}}>
           <MDBTable bordered>
             <MDBTableHead>
               <tr className='table-dark'>
@@ -146,18 +171,23 @@ function ViewCustomer({ token, setCustomerData,isToggled, setIsToggled }) {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-            <tr>
-              <td scope='row'>{name}</td>
-              <td>{email}</td>
-              <td>{contact}</td>
-              <td>{custId}</td>
-              <td>{accountNumber}</td>
-              <td>{address}</td>
-              <td>{pincode}</td>
-              <td><Button onClick={editCustomer}>Edit</Button></td>
-              <td><Button onClick={delCustById} variant="danger">Delete</Button></td>
-
-              </tr>
+              {customerList?customerList.map((d)=>{
+                return (
+                  <tr>
+                  <td scope='row'>{d.customerName}</td>
+                  <td>{d.email}</td>
+                  <td>{d.contact}</td>
+                  <td>{d.customerId}</td>
+                  <td>{d.accountNumber}</td>
+                  <td>{d.address}</td>
+                  <td>{d.pincode}</td>
+                  <td><Button onClick={editCustomer} id={d.customerId}>Edit</Button></td>
+                  <td><Button onClick={delCustById} id={d.customerId} variant="danger">Delete</Button></td>
+                  </tr>
+                )
+              }):""}
+            
+            
             </MDBTableBody>
           </MDBTable>
         </div>
