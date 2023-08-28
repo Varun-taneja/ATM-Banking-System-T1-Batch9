@@ -2,6 +2,7 @@ import '../App.css';
 import Snavbar from '../components/Snavbar'
 import { Link } from 'react-router-dom';
 import Carousel from '../components/Carousel';
+import HeroSection from '../components/HeroSection';
 function App() {
   return (
     
@@ -9,7 +10,7 @@ function App() {
     <div className='rowC'>
             <Snavbar />
             <div className='colnC'>
-                <Carousel/>
+              <video src='../videos/video-2.mp4' autoPlay loop muted />  
             </div>
     </div>
 

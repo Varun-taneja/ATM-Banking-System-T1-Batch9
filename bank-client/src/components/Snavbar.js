@@ -16,7 +16,7 @@ const Snavbar = () => {
       <CDBSidebar textColor="#fff" backgroundColor="#333" >
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            BANK|U&Me
+            BANK|U&ME
           </a>
         </CDBSidebarHeader>
         {/* <Route path='/create-customer-details' element={<CreateCustomer />} />
