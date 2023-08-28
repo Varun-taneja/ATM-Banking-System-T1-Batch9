@@ -133,7 +133,7 @@ function CreateCustomer({token, isToggled, setIsToggled}){
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridContact">
-                            <Form.Label>Contact Number</Form.Label>
+                            <Form.Label>Contact</Form.Label>
                             <Form.Control type="Contact" placeholder="xxxxxxxxxx"  value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
                             </Form.Group>
 
