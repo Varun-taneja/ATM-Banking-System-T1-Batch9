@@ -6,7 +6,7 @@ import {
 
 export default function Carousel() {
   return (
-    <MDBCarousel style={{objectFit:'cover'}} showIndicators showControls fade>
+    <MDBCarousel style={{objectFit:'cover', innerWidth:'100vw'}} showIndicators showControls fade>
       <MDBCarouselItem
         className='w-100 d-block'
         itemId={1}

@@ -11,6 +11,7 @@
 }
 
 .navbar-container {
+  padding-bottom: 1%;
   display: flex;
   justify-content: center;
   align-items: center;

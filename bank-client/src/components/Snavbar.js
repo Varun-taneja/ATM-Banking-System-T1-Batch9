@@ -8,11 +8,12 @@ import {
   CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
+import "../Snavbar.css";
 
 const Snavbar = () => {
   return (
-    <div style={{ display: 'flex', overflow: 'auto', width:'20vw', overflow: 'scroll initial',position:"sticky" }}>
-      <CDBSidebar textColor="#fff" backgroundColor="#333">
+    <div style={{ display: 'flex', overflow: 'auto', width:'29vw', overflow: 'scroll initial',position:"sticky"}}>
+      <CDBSidebar textColor="#fff" backgroundColor="#333" >
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             BANK|U&Me
@@ -24,7 +25,7 @@ const Snavbar = () => {
         <Route path='/customer-card-details' element={<CustomerCardDetails />} />
         <Route path='/balance' element={<BalanceCheck />} /> */}
         <CDBSidebarContent className="sidebar-content">
-          <CDBSidebarMenu>
+          <CDBSidebarMenu className='content'>
             <NavLink exact to="/create-customer-details" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns">Create Customer</CDBSidebarMenuItem>
             </NavLink>
