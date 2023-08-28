@@ -64,7 +64,7 @@ function CashWithdrawing({ token, setCustomerData, isToggled, setIsToggled }) {
         //(response.data);
         // setCustomerData(response.data)-
         console.log(searchValue);
-        console.log(response.data);
+        console.log(response);
         setName(response.data.accountNumber);
         setBalance(response.data.accountBalance);
       })
