@@ -21,7 +21,16 @@ function Login({setToken}) {
         e.preventDefault()
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return alert("Passwords do not match")
+            return toast.success("Passwords do not match!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
         try {
@@ -52,6 +61,16 @@ function Login({setToken}) {
             // navigate("/")
         } catch (err) {
             console.log(err)
+            toast.error(err.response.data, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
         }
 
         setLoading(false)
@@ -89,6 +108,16 @@ function Login({setToken}) {
             
         } catch(err) {
             console.log(err)
+            toast.error(err.response.data, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             // alert(err.message.substring(
             //     err.message.indexOf(":") + 1,
             //     err.message.lastIndexOf("(")))
