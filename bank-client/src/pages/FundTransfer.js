@@ -170,7 +170,7 @@ function FundTransfer({token, isToggled, setIsToggled}){
                                         <br></br>
                                             <div className="d-grid">
                                             <Button variant="dark" type="button" onClick={getBalById}>
-                                            Check Balanace
+                                            Check Balance
                                             </Button>
                                             </div>
                                         <br></br>
